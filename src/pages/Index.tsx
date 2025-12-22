@@ -1,13 +1,56 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useState } from "react";
+import { CartProvider } from "@/context/CartContext";
+import Header from "@/components/Header";
+import CategoryNav from "@/components/CategoryNav";
+import SearchBar from "@/components/SearchBar";
+import ProductList from "@/components/ProductList";
+import FloatingCartButton from "@/components/FloatingCartButton";
+import CartDrawer from "@/components/CartDrawer";
+import CheckoutForm from "@/components/CheckoutForm";
+
+const IndexContent = () => {
+  const [activeCategory, setActiveCategory] = useState("daily-dairy");
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
+
+  const handleCheckout = () => {
+    setIsCartOpen(false);
+    setIsCheckoutOpen(true);
+  };
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      <CategoryNav
+        activeCategory={activeCategory}
+        onCategoryChange={(id) => {
+          setActiveCategory(id);
+          setSearchQuery("");
+        }}
+      />
+      <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+      <ProductList
+        activeCategory={activeCategory}
+        searchQuery={searchQuery}
+        onCategoryInView={setActiveCategory}
+      />
+      <FloatingCartButton onClick={() => setIsCartOpen(true)} />
+      <CartDrawer
+        open={isCartOpen}
+        onOpenChange={setIsCartOpen}
+        onCheckout={handleCheckout}
+      />
+      <CheckoutForm open={isCheckoutOpen} onOpenChange={setIsCheckoutOpen} />
+    </div>
+  );
+};
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <CartProvider>
+      <IndexContent />
+    </CartProvider>
   );
 };
 
