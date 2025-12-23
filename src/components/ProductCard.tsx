@@ -1,7 +1,8 @@
-import { Plus, Minus } from "lucide-react";
+import { Plus, Minus, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import { useFavorites } from "@/context/FavoritesContext";
 
 interface ProductCardProps {
   product: Product;
@@ -9,11 +10,28 @@ interface ProductCardProps {
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart, updateQuantity, getItemQuantity } = useCart();
+  const { toggleFavorite, isFavorite } = useFavorites();
   const quantity = getItemQuantity(product.id);
+  const favorited = isFavorite(product.id);
 
   return (
-    <div className="bg-card rounded-lg p-4 shadow-sm border border-border hover:shadow-md transition-shadow duration-200">
-      <div className="flex justify-between items-start gap-4">
+    <div className="bg-card rounded-lg p-4 shadow-sm border border-border hover:shadow-md transition-shadow duration-200 relative">
+      {/* Favorite Button */}
+      <button
+        onClick={() => toggleFavorite(product.id)}
+        className="absolute top-3 right-3 p-1.5 rounded-full bg-background/80 hover:bg-background transition-colors group"
+        aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
+      >
+        <Heart
+          className={`h-5 w-5 transition-all duration-200 ${
+            favorited
+              ? "text-red-500 fill-red-500 scale-110"
+              : "text-muted-foreground group-hover:text-red-400 group-hover:scale-110"
+          }`}
+        />
+      </button>
+
+      <div className="flex justify-between items-start gap-4 pr-8">
         <div className="flex-1 min-w-0">
           <h3 className="font-display text-lg font-semibold text-foreground leading-tight">
             {product.name}
