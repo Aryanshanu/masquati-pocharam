@@ -47,16 +47,16 @@ const Header = () => {
       </div>
 
       {/* Product Highlights Strip */}
-      <div className="bg-secondary/80 border-y border-border py-2 overflow-hidden">
+      <div className="bg-cream border-y border-gold/30 py-3 overflow-hidden">
         <div className="container mx-auto">
-          <div className="flex items-center justify-center gap-2 md:gap-4 flex-wrap">
+          <div className="flex items-center justify-center gap-2 md:gap-6 flex-wrap">
             {productHighlights.map((item, index) => (
               <span key={item} className="flex items-center">
-                <span className="text-xs md:text-sm font-body text-foreground/80 whitespace-nowrap">
+                <span className="text-sm md:text-base font-display font-medium text-navy tracking-wide whitespace-nowrap">
                   {item}
                 </span>
                 {index < productHighlights.length - 1 && (
-                  <span className="text-primary mx-2 md:mx-4">•</span>
+                  <span className="text-gold font-bold mx-3 md:mx-6">•</span>
                 )}
               </span>
             ))}
