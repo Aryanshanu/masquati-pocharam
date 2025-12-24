@@ -3,16 +3,48 @@ import { Button } from "@/components/ui/button";
 import { Product, categories } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useFavorites } from "@/context/FavoritesContext";
+import { useState } from "react";
 
 interface ProductCardProps {
   product: Product;
 }
+
+const getBadgeStyles = (badge: string) => {
+  switch (badge) {
+    case 'bestseller':
+      return 'bg-amber-500 text-white';
+    case 'hot':
+      return 'bg-red-500 text-white';
+    case 'new':
+      return 'bg-emerald-500 text-white';
+    case 'sale':
+      return 'bg-blue-500 text-white';
+    default:
+      return 'bg-primary text-primary-foreground';
+  }
+};
+
+const getBadgeLabel = (badge: string) => {
+  switch (badge) {
+    case 'bestseller':
+      return '⭐ Bestseller';
+    case 'hot':
+      return '🔥 Hot';
+    case 'new':
+      return '✨ New';
+    case 'sale':
+      return '💰 Sale';
+    default:
+      return badge;
+  }
+};
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart, updateQuantity, getItemQuantity } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
   const quantity = getItemQuantity(product.id);
   const favorited = isFavorite(product.id);
+  const [imageError, setImageError] = useState(false);
 
   // Get category emoji for fallback
   const categoryIcon = categories.find((c) => c.id === product.category)?.icon || "📦";
@@ -21,15 +53,23 @@ const ProductCard = ({ product }: ProductCardProps) => {
     <div className="bg-card rounded-lg shadow-sm border border-border hover:shadow-md transition-shadow duration-200 overflow-hidden">
       {/* Product Image */}
       <div className="relative aspect-square bg-secondary/50">
-        {product.image ? (
+        {product.image && !imageError ? (
           <img
             src={product.image}
             alt={product.name}
             className="w-full h-full object-cover"
+            onError={() => setImageError(true)}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-5xl">
+          <div className="w-full h-full flex items-center justify-center text-5xl bg-gradient-to-br from-secondary to-secondary/30">
             {categoryIcon}
+          </div>
+        )}
+        
+        {/* Badge */}
+        {product.badge && (
+          <div className={`absolute top-2 left-2 px-2 py-1 rounded-full text-xs font-bold shadow-md ${getBadgeStyles(product.badge)}`}>
+            {getBadgeLabel(product.badge)}
           </div>
         )}
         
@@ -59,9 +99,16 @@ const ProductCard = ({ product }: ProductCardProps) => {
         </p>
 
         <div className="mt-3 flex items-center justify-between">
-          <p className="font-display text-xl font-bold text-primary">
-            ₹{product.mrp}
-          </p>
+          <div className="flex items-center gap-2">
+            <p className="font-display text-xl font-bold text-primary">
+              ₹{product.salePrice || product.mrp}
+            </p>
+            {product.salePrice && (
+              <p className="text-sm text-muted-foreground line-through">
+                ₹{product.mrp}
+              </p>
+            )}
+          </div>
 
           {quantity === 0 ? (
             <Button
