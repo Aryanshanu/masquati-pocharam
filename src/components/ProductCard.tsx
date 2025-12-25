@@ -53,16 +53,19 @@ const ProductCard = ({ product }: ProductCardProps) => {
     <div className="bg-card rounded-lg shadow-sm border border-border hover:shadow-md transition-shadow duration-200 overflow-hidden">
       {/* Product Image */}
       <div className="relative aspect-square bg-secondary/50">
-        {product.image && !imageError ? (
+        {product.image && product.image.trim() !== "" && !imageError ? (
           <img
             src={product.image}
             alt={product.name}
             className="w-full h-full object-cover"
+            loading="lazy"
+            referrerPolicy="no-referrer"
             onError={() => setImageError(true)}
           />
         ) : (
-          <div className="w-full h-full flex items-center justify-center text-5xl bg-gradient-to-br from-secondary to-secondary/30">
-            {categoryIcon}
+          <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-secondary to-secondary/30 p-4">
+            <span className="text-5xl mb-2">{categoryIcon}</span>
+            <span className="text-sm font-medium text-muted-foreground text-center line-clamp-2">{product.name}</span>
           </div>
         )}
         

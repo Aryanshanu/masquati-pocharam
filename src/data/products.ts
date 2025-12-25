@@ -29,55 +29,58 @@ const MASQATI_BASE = "https://masqati.com/Content/img";
 const goodsImg = (id: number) => `${MASQATI_BASE}/goods_img/${id}.png`;
 const featureImg = (id: number) => `${MASQATI_BASE}/feature_img/${id}.png`;
 
-// Placeholder images for categories without Masqati images
-const placeholder = (keyword: string) => `https://images.unsplash.com/photo-${keyword}?w=400&h=400&fit=crop&auto=format`;
+// Reliable placeholder images using placehold.co
+const placeholder = (text: string, bg = "F5F1EB", fg = "1E3A5F") =>
+  `https://placehold.co/400x400/${bg}/${fg}?text=${encodeURIComponent(text)}`;
 
-// High-quality food placeholder images
+// Sweets & Namkeen placeholders
 const sweetImages = {
-  gulabJamun: placeholder("1666190064552-6fa9d3aa5c45"),
-  rasgulla: placeholder("1601303516606-9b02815c2c5a"),
-  kajuKatli: placeholder("1589647363585-f4a7d3877b10"),
-  ladoo: placeholder("1598349326186-c1ea48ebb4a9"),
-  barfi: placeholder("1590080875515-8a3a8dc5735e"),
-  soanPapdi: placeholder("1605197788044-5f4a23e2e8e9"),
-  jalebi: placeholder("1589301760435-e84a14bf0dbb"),
-  imarti: placeholder("1589301760435-e84a14bf0dbb"),
-  mysorePak: placeholder("1590080875515-8a3a8dc5735e"),
-  peda: placeholder("1598349326186-c1ea48ebb4a9"),
-  kheerKadam: placeholder("1601303516606-9b02815c2c5a"),
-  namkeen: placeholder("1599490659213-e2c9d7d15ff3"),
-  bhujia: placeholder("1599490659213-e2c9d7d15ff3"),
-  mathri: placeholder("1599490659213-e2c9d7d15ff3"),
-  samosa: placeholder("1601050690597-df0568f70950"),
+  gulabJamun: placeholder("Gulab+Jamun", "D4A574", "FFF"),
+  rasgulla: placeholder("Rasgulla", "F5F5DC", "333"),
+  kajuKatli: placeholder("Kaju+Katli", "C0C0C0", "333"),
+  ladoo: placeholder("Ladoo", "FFD700", "333"),
+  barfi: placeholder("Barfi", "E8D5B7", "333"),
+  soanPapdi: placeholder("Soan+Papdi", "FFF8DC", "333"),
+  jalebi: placeholder("Jalebi", "FF8C00", "FFF"),
+  imarti: placeholder("Imarti", "FF6347", "FFF"),
+  mysorePak: placeholder("Mysore+Pak", "DAA520", "333"),
+  peda: placeholder("Peda", "FFDEAD", "333"),
+  kheerKadam: placeholder("Kheer+Kadam", "F5DEB3", "333"),
+  namkeen: placeholder("Namkeen", "D2B48C", "333"),
+  bhujia: placeholder("Bhujia", "CD853F", "FFF"),
+  mathri: placeholder("Mathri", "DEB887", "333"),
+  samosa: placeholder("Samosa", "B8860B", "FFF"),
 };
 
+// Bakery placeholders
 const bakeryImages = {
-  bread: placeholder("1509440159596-0249088772ff"),
-  milkBread: placeholder("1598373182133-52452f7691ef"),
-  brownBread: placeholder("1586444248902-2f64eddc13df"),
-  bun: placeholder("1558961363-fa8fdf82db35"),
-  toast: placeholder("1619535860434-ba1d8fa12536"),
-  rusk: placeholder("1558303926-7ee5e8a7eab8"),
-  cookies: placeholder("1499636136210-6f4ee915583e"),
-  nankhatai: placeholder("1558303926-7ee5e8a7eab8"),
-  cake: placeholder("1578985545062-69928b1d9587"),
-  muffin: placeholder("1607958996333-41aef7caefaa"),
-  croissant: placeholder("1555507036-ab1f4038808a"),
-  puff: placeholder("1603532648955-039310d96a23"),
+  bread: placeholder("Bread", "DEB887", "333"),
+  milkBread: placeholder("Milk+Bread", "FAEBD7", "333"),
+  brownBread: placeholder("Brown+Bread", "8B4513", "FFF"),
+  bun: placeholder("Bun", "F5DEB3", "333"),
+  toast: placeholder("Toast", "D2691E", "FFF"),
+  rusk: placeholder("Rusk", "CD853F", "FFF"),
+  cookies: placeholder("Cookies", "DEB887", "333"),
+  nankhatai: placeholder("Nankhatai", "F5DEB3", "333"),
+  cake: placeholder("Cake", "FFB6C1", "333"),
+  muffin: placeholder("Muffin", "D2691E", "FFF"),
+  croissant: placeholder("Croissant", "FFDEAD", "333"),
+  puff: placeholder("Puff", "DAA520", "333"),
 };
 
+// Chat placeholders
 const chatImages = {
-  paniPuri: placeholder("1601050690117-94f5f6fa8bd7"),
-  bhelPuri: placeholder("1606491048802-8c8fa4a4f7a3"),
-  sevPuri: placeholder("1601050690117-94f5f6fa8bd7"),
-  dahiPuri: placeholder("1601050690117-94f5f6fa8bd7"),
-  papdiChat: placeholder("1606491048802-8c8fa4a4f7a3"),
-  ragda: placeholder("1601050690597-df0568f70950"),
-  samosaChat: placeholder("1601050690597-df0568f70950"),
-  alooTikki: placeholder("1601050690597-df0568f70950"),
-  masala: placeholder("1596040033229-a9821ebd058d"),
-  chutney: placeholder("1599490659213-e2c9d7d15ff3"),
-  papdi: placeholder("1599490659213-e2c9d7d15ff3"),
+  paniPuri: placeholder("Pani+Puri", "FFD700", "333"),
+  bhelPuri: placeholder("Bhel+Puri", "F4A460", "333"),
+  sevPuri: placeholder("Sev+Puri", "DEB887", "333"),
+  dahiPuri: placeholder("Dahi+Puri", "FFFAF0", "333"),
+  papdiChat: placeholder("Papdi+Chat", "DAA520", "333"),
+  ragda: placeholder("Ragda", "F4A460", "333"),
+  samosaChat: placeholder("Samosa+Chat", "CD853F", "FFF"),
+  alooTikki: placeholder("Aloo+Tikki", "B8860B", "FFF"),
+  masala: placeholder("Chat+Masala", "FF6347", "FFF"),
+  chutney: placeholder("Chutney", "228B22", "FFF"),
+  papdi: placeholder("Papdi", "DEB887", "333"),
 };
 
 // Real Masqati Products
