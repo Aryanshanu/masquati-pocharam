@@ -41,16 +41,30 @@ const LocationBar = () => {
           {/* Divider */}
           <span className="hidden sm:block w-px h-5 bg-primary-foreground/30" />
 
-          {/* Phone */}
-          <button
-            onClick={handlePhoneClick}
-            className="flex items-center gap-2 text-primary-foreground hover:text-gold transition-colors group"
-          >
-            <Phone className="h-4 w-4 text-gold group-hover:scale-110 transition-transform" />
-            <span className="text-sm font-body font-bold tracking-wide">
-              9666942997
-            </span>
-          </button>
+          {/* Phone Numbers */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={() => window.location.href = "tel:9666942997"}
+              className="flex items-center gap-2 text-primary-foreground hover:text-gold transition-colors group"
+            >
+              <Phone className="h-4 w-4 text-gold group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-body font-bold tracking-wide">
+                9666942997
+              </span>
+            </button>
+            
+            <span className="w-px h-4 bg-primary-foreground/30" />
+            
+            <button
+              onClick={() => window.location.href = "tel:7995686260"}
+              className="flex items-center gap-2 text-primary-foreground hover:text-gold transition-colors group"
+            >
+              <Phone className="h-4 w-4 text-gold group-hover:scale-110 transition-transform" />
+              <span className="text-sm font-body font-bold tracking-wide">
+                7995686260
+              </span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
