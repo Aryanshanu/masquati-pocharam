@@ -12,7 +12,7 @@ import FavoritesList from "@/components/FavoritesList";
 import CheckoutForm from "@/components/CheckoutForm";
 
 const IndexContent = () => {
-  const [activeCategory, setActiveCategory] = useState("dairy");
+  const [activeCategory, setActiveCategory] = useState("ice-cream");
   const [searchQuery, setSearchQuery] = useState("");
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isFavoritesOpen, setIsFavoritesOpen] = useState(false);
