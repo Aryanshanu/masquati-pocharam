@@ -15,12 +15,12 @@ export interface Category {
   icon: string;
 }
 
-// Categories matching Masqati website
+// Categories matching Masqati website - Ice Creams & Cakes first
 export const categories: Category[] = [
-  { id: "dairy", name: "Dairy", icon: "🥛" },
   { id: "ice-cream", name: "Ice Creams", icon: "🍦" },
+  { id: "bakery", name: "Bakery & Cakes", icon: "🎂" },
+  { id: "dairy", name: "Dairy", icon: "🥛" },
   { id: "namkeen-sweets", name: "Namkeen & Sweets", icon: "🍬" },
-  { id: "bakery", name: "Bakery", icon: "🥐" },
   { id: "chat", name: "Chat", icon: "🍲" },
 ];
 
