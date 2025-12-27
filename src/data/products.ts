@@ -15,13 +15,11 @@ export interface Category {
   icon: string;
 }
 
-// Categories matching Masqati website - Ice Creams & Cakes first
+// ONLY 3 categories: Ice Creams & Cakes, Dairy, Namkeen
 export const categories: Category[] = [
-  { id: "ice-cream", name: "Ice Creams", icon: "🍦" },
-  { id: "bakery", name: "Bakery & Cakes", icon: "🎂" },
+  { id: "ice-cream", name: "Ice Creams & Cakes", icon: "🍦" },
   { id: "dairy", name: "Dairy", icon: "🥛" },
-  { id: "namkeen-sweets", name: "Namkeen & Sweets", icon: "🍬" },
-  { id: "chat", name: "Chat", icon: "🍲" },
+  { id: "namkeen", name: "Namkeen", icon: "🍿" },
 ];
 
 // Masqati image base URLs
@@ -29,62 +27,70 @@ const MASQATI_BASE = "https://masqati.com/Content/img";
 const goodsImg = (id: number) => `${MASQATI_BASE}/goods_img/${id}.png`;
 const featureImg = (id: number) => `${MASQATI_BASE}/feature_img/${id}.png`;
 
-// Reliable placeholder images using placehold.co
+// Reliable placeholder images for Namkeen
 const placeholder = (text: string, bg = "F5F1EB", fg = "1E3A5F") =>
   `https://placehold.co/400x400/${bg}/${fg}?text=${encodeURIComponent(text)}`;
 
-// Sweets & Namkeen placeholders
-const sweetImages = {
-  gulabJamun: placeholder("Gulab+Jamun", "D4A574", "FFF"),
-  rasgulla: placeholder("Rasgulla", "F5F5DC", "333"),
-  kajuKatli: placeholder("Kaju+Katli", "C0C0C0", "333"),
-  ladoo: placeholder("Ladoo", "FFD700", "333"),
-  barfi: placeholder("Barfi", "E8D5B7", "333"),
-  soanPapdi: placeholder("Soan+Papdi", "FFF8DC", "333"),
-  jalebi: placeholder("Jalebi", "FF8C00", "FFF"),
-  imarti: placeholder("Imarti", "FF6347", "FFF"),
-  mysorePak: placeholder("Mysore+Pak", "DAA520", "333"),
-  peda: placeholder("Peda", "FFDEAD", "333"),
-  kheerKadam: placeholder("Kheer+Kadam", "F5DEB3", "333"),
-  namkeen: placeholder("Namkeen", "D2B48C", "333"),
+const namkeenImages = {
+  namkeenMix: placeholder("Namkeen+Mix", "D2B48C", "333"),
   bhujia: placeholder("Bhujia", "CD853F", "FFF"),
+  moongDal: placeholder("Moong+Dal", "DAA520", "333"),
+  khattaMeetha: placeholder("Khatta+Meetha", "DEB887", "333"),
   mathri: placeholder("Mathri", "DEB887", "333"),
-  samosa: placeholder("Samosa", "B8860B", "FFF"),
+  alooBhujia: placeholder("Aloo+Bhujia", "B8860B", "FFF"),
 };
 
-// Bakery placeholders
-const bakeryImages = {
-  bread: placeholder("Bread", "DEB887", "333"),
-  milkBread: placeholder("Milk+Bread", "FAEBD7", "333"),
-  brownBread: placeholder("Brown+Bread", "8B4513", "FFF"),
-  bun: placeholder("Bun", "F5DEB3", "333"),
-  toast: placeholder("Toast", "D2691E", "FFF"),
-  rusk: placeholder("Rusk", "CD853F", "FFF"),
-  cookies: placeholder("Cookies", "DEB887", "333"),
-  nankhatai: placeholder("Nankhatai", "F5DEB3", "333"),
-  cake: placeholder("Cake", "FFB6C1", "333"),
-  muffin: placeholder("Muffin", "D2691E", "FFF"),
-  croissant: placeholder("Croissant", "FFDEAD", "333"),
-  puff: placeholder("Puff", "DAA520", "333"),
+// Cake placeholder images
+const cakeImages = {
+  fruitCake: placeholder("Fruit+Cake", "FFB6C1", "333"),
+  plumCake: placeholder("Plum+Cake", "8B4513", "FFF"),
+  chocolateCake: placeholder("Chocolate+Cake", "4A2C2A", "FFF"),
+  blackForest: placeholder("Black+Forest", "2C1810", "FFF"),
 };
 
-// Chat placeholders
-const chatImages = {
-  paniPuri: placeholder("Pani+Puri", "FFD700", "333"),
-  bhelPuri: placeholder("Bhel+Puri", "F4A460", "333"),
-  sevPuri: placeholder("Sev+Puri", "DEB887", "333"),
-  dahiPuri: placeholder("Dahi+Puri", "FFFAF0", "333"),
-  papdiChat: placeholder("Papdi+Chat", "DAA520", "333"),
-  ragda: placeholder("Ragda", "F4A460", "333"),
-  samosaChat: placeholder("Samosa+Chat", "CD853F", "FFF"),
-  alooTikki: placeholder("Aloo+Tikki", "B8860B", "FFF"),
-  masala: placeholder("Chat+Masala", "FF6347", "FFF"),
-  chutney: placeholder("Chutney", "228B22", "FFF"),
-  papdi: placeholder("Papdi", "DEB887", "333"),
-};
-
-// Real Masqati Products
+// Real Masqati Products - ONLY Ice Creams & Cakes, Dairy, Namkeen
 export const products: Product[] = [
+  // ==================== ICE CREAMS & CAKES ====================
+  // Ice Creams
+  { id: "ic1", name: "Badam Pista Kulfi", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(1), badge: "bestseller" },
+  { id: "ic2", name: "Badam Milk Kulfi", packSize: "1 Piece", mrp: 35, category: "ice-cream", image: goodsImg(2), badge: "hot" },
+  { id: "ic3", name: "Butter Scotch Cone", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(3) },
+  { id: "ic4", name: "Choco Kulfi", packSize: "1 Piece", mrp: 15, category: "ice-cream", image: goodsImg(4), badge: "bestseller" },
+  { id: "ic5", name: "Choco Bar", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(5), badge: "hot" },
+  { id: "ic6", name: "Family Pack Ice Cream", packSize: "4 Litre Tub", mrp: 1500, category: "ice-cream", image: goodsImg(6), badge: "bestseller" },
+  { id: "ic7", name: "Mango Kulfi", packSize: "1 Piece", mrp: 20, category: "ice-cream", image: goodsImg(1), badge: "hot" },
+  { id: "ic8", name: "Mango Milk Ice", packSize: "1 Piece", mrp: 40, category: "ice-cream", image: goodsImg(2) },
+  { id: "ic9", name: "Matka Kulfi", packSize: "1 Piece", mrp: 50, category: "ice-cream", image: goodsImg(1), badge: "bestseller" },
+  { id: "ic10", name: "Orange Duet", packSize: "1 Piece", mrp: 15, category: "ice-cream", image: goodsImg(3) },
+  { id: "ic11", name: "Pista Kulfi", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(1), badge: "hot" },
+  { id: "ic12", name: "Rajbhog Ice Cream", packSize: "1 Piece", mrp: 30, category: "ice-cream", image: goodsImg(2) },
+  { id: "ic13", name: "Kesar Kulfi", packSize: "1 Piece", mrp: 30, category: "ice-cream", image: goodsImg(1), badge: "bestseller" },
+  { id: "ic14", name: "Vanilla Cone", packSize: "1 Piece", mrp: 20, category: "ice-cream", image: goodsImg(3) },
+  { id: "ic15", name: "Strawberry Cone", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(3), badge: "new" },
+  { id: "ic16", name: "Chocolate Cone", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(3) },
+  { id: "ic17", name: "Malai Kulfi", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(1), badge: "hot" },
+  { id: "ic18", name: "Rose Kulfi", packSize: "1 Piece", mrp: 20, category: "ice-cream", image: goodsImg(1) },
+  { id: "ic19", name: "Vanilla Cup", packSize: "100ml", mrp: 30, category: "ice-cream", image: goodsImg(4) },
+  { id: "ic20", name: "Strawberry Cup", packSize: "100ml", mrp: 30, category: "ice-cream", image: goodsImg(4), badge: "new" },
+  { id: "ic21", name: "Chocolate Cup", packSize: "100ml", mrp: 35, category: "ice-cream", image: goodsImg(4), badge: "bestseller" },
+  { id: "ic22", name: "Butter Scotch Cup", packSize: "100ml", mrp: 35, category: "ice-cream", image: goodsImg(4) },
+  { id: "ic23", name: "Mango Dolly", packSize: "1 Piece", mrp: 10, category: "ice-cream", image: goodsImg(5), badge: "hot" },
+  { id: "ic24", name: "Orange Dolly", packSize: "1 Piece", mrp: 10, category: "ice-cream", image: goodsImg(5) },
+  { id: "ic25", name: "Cola Candy", packSize: "1 Piece", mrp: 5, category: "ice-cream", image: goodsImg(5) },
+  { id: "ic26", name: "Family Pack - Vanilla", packSize: "750ml", mrp: 250, category: "ice-cream", image: goodsImg(6) },
+  { id: "ic27", name: "Family Pack - Strawberry", packSize: "750ml", mrp: 250, category: "ice-cream", image: goodsImg(6) },
+  { id: "ic28", name: "Family Pack - Chocolate", packSize: "750ml", mrp: 280, category: "ice-cream", image: goodsImg(6), badge: "bestseller" },
+  { id: "ic29", name: "Family Pack - Butter Scotch", packSize: "750ml", mrp: 280, category: "ice-cream", image: goodsImg(6) },
+  { id: "ic30", name: "Party Pack - Assorted", packSize: "2 Litre", mrp: 650, category: "ice-cream", image: goodsImg(6), badge: "hot" },
+  
+  // Cakes (part of ice-cream category)
+  { id: "ck1", name: "Fruit Cake", packSize: "500g", mrp: 350, category: "ice-cream", image: cakeImages.fruitCake, badge: "bestseller" },
+  { id: "ck2", name: "Plum Cake", packSize: "500g", mrp: 380, category: "ice-cream", image: cakeImages.plumCake, badge: "new" },
+  { id: "ck3", name: "Chocolate Cake", packSize: "500g", mrp: 400, category: "ice-cream", image: cakeImages.chocolateCake, badge: "hot" },
+  { id: "ck4", name: "Black Forest Cake", packSize: "500g", mrp: 450, category: "ice-cream", image: cakeImages.blackForest, badge: "bestseller" },
+  { id: "ck5", name: "Fruit Cake", packSize: "1 Kg", mrp: 650, category: "ice-cream", image: cakeImages.fruitCake },
+  { id: "ck6", name: "Chocolate Cake", packSize: "1 Kg", mrp: 750, category: "ice-cream", image: cakeImages.chocolateCake, badge: "hot" },
+
   // ==================== DAIRY PRODUCTS ====================
   { id: "d1", name: "Fresh Toned Milk", packSize: "500ml", mrp: 38, category: "dairy", image: featureImg(1), badge: "bestseller" },
   { id: "d2", name: "Fresh Toned Milk", packSize: "1 Litre", mrp: 75, category: "dairy", image: featureImg(1) },
@@ -120,100 +126,19 @@ export const products: Product[] = [
   { id: "d32", name: "Fresh Cream", packSize: "200ml", mrp: 85, category: "dairy", image: featureImg(8) },
   { id: "d33", name: "Fresh Cream", packSize: "500ml", mrp: 200, category: "dairy", image: featureImg(8), badge: "hot" },
 
-  // ==================== ICE CREAMS ====================
-  { id: "ic1", name: "Badam Pista Kulfi", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(1), badge: "bestseller" },
-  { id: "ic2", name: "Badam Milk Kulfi", packSize: "1 Piece", mrp: 35, category: "ice-cream", image: goodsImg(2), badge: "hot" },
-  { id: "ic3", name: "Butter Scotch Cone", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(3) },
-  { id: "ic4", name: "Choco Kulfi", packSize: "1 Piece", mrp: 15, category: "ice-cream", image: goodsImg(4), badge: "bestseller" },
-  { id: "ic5", name: "Choco Bar", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(5), badge: "hot" },
-  { id: "ic6", name: "Family Pack Ice Cream", packSize: "4 Litre Tub", mrp: 1500, category: "ice-cream", image: goodsImg(6), badge: "bestseller" },
-  { id: "ic7", name: "Mango Kulfi", packSize: "1 Piece", mrp: 20, category: "ice-cream", image: goodsImg(1), badge: "hot" },
-  { id: "ic8", name: "Mango Milk Ice", packSize: "1 Piece", mrp: 40, category: "ice-cream", image: goodsImg(2) },
-  { id: "ic9", name: "Matka Kulfi", packSize: "1 Piece", mrp: 50, category: "ice-cream", image: goodsImg(1), badge: "bestseller" },
-  { id: "ic10", name: "Orange Duet", packSize: "1 Piece", mrp: 15, category: "ice-cream", image: goodsImg(3) },
-  { id: "ic11", name: "Pista Kulfi", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(1), badge: "hot" },
-  { id: "ic12", name: "Rajbhog Ice Cream", packSize: "1 Piece", mrp: 30, category: "ice-cream", image: goodsImg(2) },
-  { id: "ic13", name: "Kesar Kulfi", packSize: "1 Piece", mrp: 30, category: "ice-cream", image: goodsImg(1), badge: "bestseller" },
-  { id: "ic14", name: "Vanilla Cone", packSize: "1 Piece", mrp: 20, category: "ice-cream", image: goodsImg(3) },
-  { id: "ic15", name: "Strawberry Cone", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(3), badge: "new" },
-  { id: "ic16", name: "Chocolate Cone", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(3) },
-  { id: "ic17", name: "Malai Kulfi", packSize: "1 Piece", mrp: 25, category: "ice-cream", image: goodsImg(1), badge: "hot" },
-  { id: "ic18", name: "Rose Kulfi", packSize: "1 Piece", mrp: 20, category: "ice-cream", image: goodsImg(1) },
-  { id: "ic19", name: "Vanilla Cup", packSize: "100ml", mrp: 30, category: "ice-cream", image: goodsImg(4) },
-  { id: "ic20", name: "Strawberry Cup", packSize: "100ml", mrp: 30, category: "ice-cream", image: goodsImg(4), badge: "new" },
-  { id: "ic21", name: "Chocolate Cup", packSize: "100ml", mrp: 35, category: "ice-cream", image: goodsImg(4), badge: "bestseller" },
-  { id: "ic22", name: "Butter Scotch Cup", packSize: "100ml", mrp: 35, category: "ice-cream", image: goodsImg(4) },
-  { id: "ic23", name: "Mango Dolly", packSize: "1 Piece", mrp: 10, category: "ice-cream", image: goodsImg(5), badge: "hot" },
-  { id: "ic24", name: "Orange Dolly", packSize: "1 Piece", mrp: 10, category: "ice-cream", image: goodsImg(5) },
-  { id: "ic25", name: "Cola Candy", packSize: "1 Piece", mrp: 5, category: "ice-cream", image: goodsImg(5) },
-  { id: "ic26", name: "Family Pack - Vanilla", packSize: "750ml", mrp: 250, category: "ice-cream", image: goodsImg(6) },
-  { id: "ic27", name: "Family Pack - Strawberry", packSize: "750ml", mrp: 250, category: "ice-cream", image: goodsImg(6) },
-  { id: "ic28", name: "Family Pack - Chocolate", packSize: "750ml", mrp: 280, category: "ice-cream", image: goodsImg(6), badge: "bestseller" },
-  { id: "ic29", name: "Family Pack - Butter Scotch", packSize: "750ml", mrp: 280, category: "ice-cream", image: goodsImg(6) },
-  { id: "ic30", name: "Party Pack - Assorted", packSize: "2 Litre", mrp: 650, category: "ice-cream", image: goodsImg(6), badge: "hot" },
-
-  // ==================== NAMKEEN & SWEETS ====================
-  { id: "ns1", name: "Gulab Jamun", packSize: "6 Pieces", mrp: 120, category: "namkeen-sweets", image: sweetImages.gulabJamun, badge: "bestseller" },
-  { id: "ns2", name: "Gulab Jamun", packSize: "12 Pieces", mrp: 220, category: "namkeen-sweets", image: sweetImages.gulabJamun },
-  { id: "ns3", name: "Rasgulla", packSize: "6 Pieces", mrp: 100, category: "namkeen-sweets", image: sweetImages.rasgulla, badge: "hot" },
-  { id: "ns4", name: "Rasgulla", packSize: "12 Pieces", mrp: 180, category: "namkeen-sweets", image: sweetImages.rasgulla },
-  { id: "ns5", name: "Kaju Katli", packSize: "250g", mrp: 280, category: "namkeen-sweets", image: sweetImages.kajuKatli, badge: "bestseller" },
-  { id: "ns6", name: "Kaju Katli", packSize: "500g", mrp: 540, category: "namkeen-sweets", image: sweetImages.kajuKatli },
-  { id: "ns7", name: "Motichoor Ladoo", packSize: "500g", mrp: 280, category: "namkeen-sweets", image: sweetImages.ladoo, badge: "hot" },
-  { id: "ns8", name: "Besan Ladoo", packSize: "500g", mrp: 260, category: "namkeen-sweets", image: sweetImages.ladoo },
-  { id: "ns9", name: "Barfi Assorted", packSize: "500g", mrp: 320, category: "namkeen-sweets", image: sweetImages.barfi, badge: "bestseller" },
-  { id: "ns10", name: "Soan Papdi", packSize: "250g", mrp: 120, category: "namkeen-sweets", image: sweetImages.soanPapdi },
-  { id: "ns11", name: "Soan Papdi", packSize: "500g", mrp: 220, category: "namkeen-sweets", image: sweetImages.soanPapdi, badge: "hot" },
-  { id: "ns12", name: "Jalebi Fresh", packSize: "500g", mrp: 180, category: "namkeen-sweets", image: sweetImages.jalebi, badge: "bestseller" },
-  { id: "ns13", name: "Imarti Fresh", packSize: "500g", mrp: 200, category: "namkeen-sweets", image: sweetImages.imarti },
-  { id: "ns14", name: "Mysore Pak", packSize: "250g", mrp: 180, category: "namkeen-sweets", image: sweetImages.mysorePak },
-  { id: "ns15", name: "Peda", packSize: "250g", mrp: 200, category: "namkeen-sweets", image: sweetImages.peda, badge: "hot" },
-  { id: "ns16", name: "Kheer Kadam", packSize: "6 Pieces", mrp: 150, category: "namkeen-sweets", image: sweetImages.kheerKadam, badge: "new" },
-  { id: "ns17", name: "Namkeen Mix", packSize: "200g", mrp: 60, category: "namkeen-sweets", image: sweetImages.namkeen },
-  { id: "ns18", name: "Namkeen Mix", packSize: "500g", mrp: 140, category: "namkeen-sweets", image: sweetImages.namkeen, badge: "bestseller" },
-  { id: "ns19", name: "Bhujia Sev", packSize: "200g", mrp: 55, category: "namkeen-sweets", image: sweetImages.bhujia },
-  { id: "ns20", name: "Bhujia Sev", packSize: "500g", mrp: 130, category: "namkeen-sweets", image: sweetImages.bhujia, badge: "hot" },
-  { id: "ns21", name: "Aloo Bhujia", packSize: "200g", mrp: 50, category: "namkeen-sweets", image: sweetImages.bhujia },
-  { id: "ns22", name: "Moong Dal", packSize: "200g", mrp: 65, category: "namkeen-sweets", image: sweetImages.namkeen, badge: "bestseller" },
-  { id: "ns23", name: "Khatta Meetha", packSize: "200g", mrp: 55, category: "namkeen-sweets", image: sweetImages.namkeen },
-  { id: "ns24", name: "Mathri", packSize: "250g", mrp: 70, category: "namkeen-sweets", image: sweetImages.mathri, badge: "hot" },
-  { id: "ns25", name: "Samosa (Frozen)", packSize: "6 Pieces", mrp: 90, category: "namkeen-sweets", image: sweetImages.samosa },
-
-  // ==================== BAKERY ====================
-  { id: "b1", name: "Fresh Bread", packSize: "400g", mrp: 35, category: "bakery", image: bakeryImages.bread, badge: "bestseller" },
-  { id: "b2", name: "Milk Bread", packSize: "400g", mrp: 45, category: "bakery", image: bakeryImages.milkBread },
-  { id: "b3", name: "Brown Bread", packSize: "400g", mrp: 50, category: "bakery", image: bakeryImages.brownBread, badge: "hot" },
-  { id: "b4", name: "Multigrain Bread", packSize: "400g", mrp: 60, category: "bakery", image: bakeryImages.brownBread },
-  { id: "b5", name: "Pav Bun", packSize: "8 Pieces", mrp: 30, category: "bakery", image: bakeryImages.bun, badge: "bestseller" },
-  { id: "b6", name: "Burger Bun", packSize: "4 Pieces", mrp: 40, category: "bakery", image: bakeryImages.bun },
-  { id: "b7", name: "Hot Dog Bun", packSize: "4 Pieces", mrp: 45, category: "bakery", image: bakeryImages.bun, badge: "new" },
-  { id: "b8", name: "Butter Toast", packSize: "200g", mrp: 40, category: "bakery", image: bakeryImages.toast },
-  { id: "b9", name: "Rusk Plain", packSize: "300g", mrp: 55, category: "bakery", image: bakeryImages.rusk, badge: "hot" },
-  { id: "b10", name: "Rusk Elaichi", packSize: "300g", mrp: 65, category: "bakery", image: bakeryImages.rusk },
-  { id: "b11", name: "Cake Rusk", packSize: "200g", mrp: 50, category: "bakery", image: bakeryImages.rusk, badge: "bestseller" },
-  { id: "b12", name: "Khari Biscuit", packSize: "200g", mrp: 45, category: "bakery", image: bakeryImages.cookies },
-  { id: "b13", name: "Fan Cookies", packSize: "250g", mrp: 70, category: "bakery", image: bakeryImages.cookies, badge: "hot" },
-  { id: "b14", name: "Nankhatai", packSize: "250g", mrp: 80, category: "bakery", image: bakeryImages.nankhatai, badge: "bestseller" },
-  { id: "b15", name: "Fruit Cake", packSize: "200g", mrp: 90, category: "bakery", image: bakeryImages.cake },
-  { id: "b16", name: "Plum Cake", packSize: "200g", mrp: 95, category: "bakery", image: bakeryImages.cake, badge: "new" },
-  { id: "b17", name: "Muffin Chocolate", packSize: "2 Pieces", mrp: 60, category: "bakery", image: bakeryImages.muffin },
-  { id: "b18", name: "Croissant Plain", packSize: "2 Pieces", mrp: 70, category: "bakery", image: bakeryImages.croissant, badge: "hot" },
-  { id: "b19", name: "Puff Veg", packSize: "2 Pieces", mrp: 50, category: "bakery", image: bakeryImages.puff, badge: "bestseller" },
-  { id: "b20", name: "Patties Veg", packSize: "2 Pieces", mrp: 55, category: "bakery", image: bakeryImages.puff },
-
-  // ==================== CHAT ====================
-  { id: "c1", name: "Pani Puri Kit", packSize: "Complete Set", mrp: 80, category: "chat", image: chatImages.paniPuri, badge: "bestseller" },
-  { id: "c2", name: "Bhel Puri Kit", packSize: "Complete Set", mrp: 70, category: "chat", image: chatImages.bhelPuri },
-  { id: "c3", name: "Sev Puri Kit", packSize: "Complete Set", mrp: 75, category: "chat", image: chatImages.sevPuri, badge: "hot" },
-  { id: "c4", name: "Dahi Puri Kit", packSize: "Complete Set", mrp: 85, category: "chat", image: chatImages.dahiPuri },
-  { id: "c5", name: "Papdi Chat Kit", packSize: "Complete Set", mrp: 90, category: "chat", image: chatImages.papdiChat, badge: "bestseller" },
-  { id: "c6", name: "Ragda Pattice", packSize: "2 Servings", mrp: 100, category: "chat", image: chatImages.ragda },
-  { id: "c7", name: "Samosa Chat Kit", packSize: "4 Pieces + Chutneys", mrp: 120, category: "chat", image: chatImages.samosaChat, badge: "hot" },
-  { id: "c8", name: "Aloo Tikki", packSize: "4 Pieces", mrp: 80, category: "chat", image: chatImages.alooTikki },
-  { id: "c9", name: "Chat Masala", packSize: "100g", mrp: 35, category: "chat", image: chatImages.masala, badge: "bestseller" },
-  { id: "c10", name: "Green Chutney", packSize: "200g", mrp: 40, category: "chat", image: chatImages.chutney },
-  { id: "c11", name: "Sweet Chutney", packSize: "200g", mrp: 45, category: "chat", image: chatImages.chutney, badge: "hot" },
-  { id: "c12", name: "Papdi (Ready)", packSize: "200g", mrp: 50, category: "chat", image: chatImages.papdi },
+  // ==================== NAMKEEN ONLY (No Sweets) ====================
+  { id: "n1", name: "Namkeen Mix", packSize: "200g", mrp: 60, category: "namkeen", image: namkeenImages.namkeenMix },
+  { id: "n2", name: "Namkeen Mix", packSize: "500g", mrp: 140, category: "namkeen", image: namkeenImages.namkeenMix, badge: "bestseller" },
+  { id: "n3", name: "Bhujia Sev", packSize: "200g", mrp: 55, category: "namkeen", image: namkeenImages.bhujia },
+  { id: "n4", name: "Bhujia Sev", packSize: "500g", mrp: 130, category: "namkeen", image: namkeenImages.bhujia, badge: "hot" },
+  { id: "n5", name: "Aloo Bhujia", packSize: "200g", mrp: 50, category: "namkeen", image: namkeenImages.alooBhujia },
+  { id: "n6", name: "Aloo Bhujia", packSize: "500g", mrp: 120, category: "namkeen", image: namkeenImages.alooBhujia, badge: "bestseller" },
+  { id: "n7", name: "Moong Dal", packSize: "200g", mrp: 65, category: "namkeen", image: namkeenImages.moongDal, badge: "bestseller" },
+  { id: "n8", name: "Moong Dal", packSize: "500g", mrp: 150, category: "namkeen", image: namkeenImages.moongDal },
+  { id: "n9", name: "Khatta Meetha", packSize: "200g", mrp: 55, category: "namkeen", image: namkeenImages.khattaMeetha },
+  { id: "n10", name: "Khatta Meetha", packSize: "500g", mrp: 130, category: "namkeen", image: namkeenImages.khattaMeetha, badge: "hot" },
+  { id: "n11", name: "Mathri", packSize: "250g", mrp: 70, category: "namkeen", image: namkeenImages.mathri, badge: "hot" },
+  { id: "n12", name: "Mathri", packSize: "500g", mrp: 135, category: "namkeen", image: namkeenImages.mathri },
 ];
 
 export const getProductsByCategory = (categoryId: string): Product[] => {

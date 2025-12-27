@@ -6,14 +6,13 @@ const Header = () => {
   const [showPromo, setShowPromo] = useState(true);
 
   const productHighlights = [
-    "Ice Creams & Sundaes",
-    "Kulfi & Milkshakes",
-    "Celebration Cakes",
-    "Snacks & More",
+    "Ice Creams & Cakes",
+    "Fresh Dairy",
+    "Crispy Namkeen",
   ];
 
   const handleLocationClick = () => {
-    window.open("https://maps.app.goo.gl/JnxHSYLbM7vbQfCu5", "_blank");
+    window.open("https://maps.app.goo.gl/YhsGzpvjSL4ti5NE6", "_blank");
   };
 
   const handleWhatsAppClick = () => {
