@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { MapPin, Loader2, Send } from "lucide-react";
+import { MapPin, Loader2, Send, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dialog";
 import { useCart } from "@/context/CartContext";
 import { useToast } from "@/hooks/use-toast";
+import { useNewYearOffer } from "@/hooks/useNewYearOffer";
 
 interface CheckoutFormProps {
   open: boolean;
@@ -21,8 +22,9 @@ interface CheckoutFormProps {
 const WHATSAPP_NUMBER = "917995686260";
 
 const CheckoutForm = ({ open, onOpenChange }: CheckoutFormProps) => {
-  const { items, totalAmount, clearCart } = useCart();
+  const { items, clearCart } = useCart();
   const { toast } = useToast();
+  const offerStatus = useNewYearOffer(items);
   
   const [name, setName] = useState("");
   const [contact, setContact] = useState("");
@@ -94,6 +96,8 @@ const CheckoutForm = ({ open, onOpenChange }: CheckoutFormProps) => {
   const handleSubmit = () => {
     if (!validateForm()) return;
 
+    const finalTotal = offerStatus.isEligible ? offerStatus.discountedTotal : offerStatus.originalTotal;
+
     // Build order message
     let message = `🛒 *New Order from Masqati Catalogue*\n\n`;
     message += `👤 *Customer Details*\n`;
@@ -112,7 +116,13 @@ const CheckoutForm = ({ open, onOpenChange }: CheckoutFormProps) => {
       message += `${index + 1}. ${item.product.name} (${item.product.packSize}) × ${item.quantity} = ₹${itemTotal}\n`;
     });
 
-    message += `\n💰 *Total: ₹${totalAmount}*`;
+    if (offerStatus.isEligible && offerStatus.savings > 0) {
+      message += `\n🎉 *New Year Offer Applied!*\n`;
+      message += `Subtotal: ₹${offerStatus.originalTotal}\n`;
+      message += `Discount: -₹${offerStatus.savings}\n`;
+    }
+
+    message += `\n💰 *Total: ₹${finalTotal}*`;
 
     // Encode and open WhatsApp
     const encodedMessage = encodeURIComponent(message);
@@ -240,9 +250,23 @@ const CheckoutForm = ({ open, onOpenChange }: CheckoutFormProps) => {
               <span>{items.length} items</span>
               <span>{items.reduce((sum, item) => sum + item.quantity, 0)} units</span>
             </div>
+            {offerStatus.isEligible && offerStatus.savings > 0 && (
+              <>
+                <div className="flex justify-between font-body text-sm text-muted-foreground">
+                  <span>Subtotal</span>
+                  <span className="line-through">₹{offerStatus.originalTotal}</span>
+                </div>
+                <div className="flex items-center gap-2 text-green-600 text-sm">
+                  <Gift className="h-4 w-4" />
+                  <span className="font-body font-semibold">New Year Offer: -₹{offerStatus.savings}</span>
+                </div>
+              </>
+            )}
             <div className="flex justify-between font-display">
               <span className="font-semibold">Total Amount</span>
-              <span className="text-xl font-bold text-primary">₹{totalAmount}</span>
+              <span className="text-xl font-bold text-primary">
+                ₹{offerStatus.isEligible ? offerStatus.discountedTotal : offerStatus.originalTotal}
+              </span>
             </div>
           </div>
 

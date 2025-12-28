@@ -87,13 +87,13 @@ export const products: Product[] = [
   { id: "ic29", name: "Family Pack - Butter Scotch", packSize: "750ml", mrp: 280, category: "ice-cream", image: icecream6 },
   { id: "ic30", name: "Party Pack - Assorted", packSize: "2 Litre", mrp: 650, category: "ice-cream", image: icecream6, badge: "hot" },
   
-  // Cakes (ONLY 3 types as requested: Butter Scotch, Red Velvet, Chocolate)
-  { id: "ck1", name: "Butter Scotch Cake", packSize: "500g", mrp: 350, category: "ice-cream", image: icecream4, badge: "bestseller" },
-  { id: "ck2", name: "Butter Scotch Cake", packSize: "1 Kg", mrp: 650, category: "ice-cream", image: icecream4 },
-  { id: "ck3", name: "Red Velvet Cake", packSize: "500g", mrp: 400, category: "ice-cream", image: icecream2, badge: "new" },
-  { id: "ck4", name: "Red Velvet Cake", packSize: "1 Kg", mrp: 750, category: "ice-cream", image: icecream2, badge: "hot" },
-  { id: "ck5", name: "Chocolate Cake", packSize: "500g", mrp: 380, category: "ice-cream", image: icecream5, badge: "bestseller" },
-  { id: "ck6", name: "Chocolate Cake", packSize: "1 Kg", mrp: 700, category: "ice-cream", image: icecream5, badge: "hot" },
+  // NEW YEAR OFFER: 1 Litre Ice Cream at ₹100
+  { id: "ic31", name: "Ice Cream", packSize: "1 Litre", mrp: 100, category: "ice-cream", image: icecream6, badge: "new" },
+  
+  // Cakes (ONLY 3 types: Butter Scotch, Red Velvet, Chocolate - ALL 1 Kg at ₹700)
+  { id: "ck1", name: "Butter Scotch Cake", packSize: "1 Kg", mrp: 700, category: "ice-cream", image: icecream4, badge: "bestseller" },
+  { id: "ck2", name: "Red Velvet Cake", packSize: "1 Kg", mrp: 700, category: "ice-cream", image: icecream2, badge: "hot" },
+  { id: "ck3", name: "Chocolate Cake", packSize: "1 Kg", mrp: 700, category: "ice-cream", image: icecream5, badge: "new" },
 
   // ==================== DAIRY PRODUCTS ====================
   // Images verified from Masqati official website feature_img
