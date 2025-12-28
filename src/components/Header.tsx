@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { MapPin, Phone, X, Sparkles } from "lucide-react";
+import { MapPin, Phone, Sparkles } from "lucide-react";
 import masqatiLogo from "@/assets/masqati-logo.png";
+import NewYearOfferBanner from "@/components/NewYearOfferBanner";
 
 const Header = () => {
-  const [showPromo, setShowPromo] = useState(true);
 
   const productHighlights = [
     "Ice Creams & Cakes",
@@ -22,26 +21,8 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* Dismissible Promo Strip */}
-      {showPromo && (
-        <div className="relative bg-gradient-to-r from-red-600 via-green-700 to-red-600 py-2 px-4 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMTAiIGN5PSIxMCIgcj0iMSIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjEpIi8+PC9zdmc+')] opacity-30" />
-          <div className="container mx-auto flex items-center justify-center gap-3 relative">
-            <span className="text-2xl animate-bounce">🎄</span>
-            <p className="text-white text-sm md:text-base font-display font-semibold tracking-wide text-center">
-              WE ARE NOW OPEN FOR CHRISTMAS & NEW YEAR CELEBRATIONS!
-            </p>
-            <span className="text-2xl animate-bounce" style={{ animationDelay: "0.5s" }}>🎅</span>
-          </div>
-          <button
-            onClick={() => setShowPromo(false)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors p-1"
-            aria-label="Close promo banner"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        </div>
-      )}
+      {/* New Year Offer Banner - Always visible */}
+      <NewYearOfferBanner />
 
       {/* Premium Main Banner */}
       <div className="relative bg-gradient-to-br from-navy via-navy/95 to-navy overflow-hidden">

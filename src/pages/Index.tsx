@@ -10,6 +10,7 @@ import FloatingFavoritesButton from "@/components/FloatingFavoritesButton";
 import CartDrawer from "@/components/CartDrawer";
 import FavoritesList from "@/components/FavoritesList";
 import CheckoutForm from "@/components/CheckoutForm";
+import NewYearOfferPopup from "@/components/NewYearOfferPopup";
 
 const IndexContent = () => {
   const [activeCategory, setActiveCategory] = useState("ice-cream");
@@ -48,6 +49,7 @@ const IndexContent = () => {
       />
       <FavoritesList open={isFavoritesOpen} onOpenChange={setIsFavoritesOpen} />
       <CheckoutForm open={isCheckoutOpen} onOpenChange={setIsCheckoutOpen} />
+      <NewYearOfferPopup />
     </div>
   );
 };
