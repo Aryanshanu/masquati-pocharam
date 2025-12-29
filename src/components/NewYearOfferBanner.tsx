@@ -29,10 +29,7 @@ const NewYearOfferBanner = () => {
           </span>
         </div>
         
-        <span className="text-yellow-100 font-body text-xs md:text-sm hidden lg:block">
-          (or Namkeen worth ₹100)
-        </span>
-      </div>
+
     </div>
   );
 };
