@@ -79,7 +79,7 @@ const NewYearOfferPopup = () => {
               {/* Savings highlight */}
               <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg px-4 py-2">
                 <p className="text-green-700 dark:text-green-400 font-body font-semibold text-sm">
-                  🎁 Save up to ₹200 on this combo!
+                  🎁 Save ₹300 on this combo! Offer Valid till 01-01-2026
                 </p>
               </div>
             </div>
