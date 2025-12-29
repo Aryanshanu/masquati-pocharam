@@ -108,8 +108,8 @@ export const products: Product[] = [
   { id: "cake-redvelvet-1kg", name: "Red Velvet Round Cake", packSize: "1 Kg", mrp: 700, category: "ice-cream", subcategory: "Ice Cream Cakes", badge: "new", validity: "6 Months" },
 
   // ==================== STICKS ====================
-  { id: "stick-chacobar-dairy", name: "Chaco Bar (Dairy)", packSize: "1 pc", mrp: 30, category: "ice-cream", subcategory: "Sticks", validity: "6 Months" },
-  { id: "stick-minichoco-fd", name: "Mini Choco Bar (FD)", packSize: "1 pc", mrp: 15, category: "ice-cream", subcategory: "Sticks", validity: "6 Months" },
+  { id: "stick-chacobar-dairy", name: "Choco Bar ", packSize: "1 pc", mrp: 30, category: "ice-cream", subcategory: "Sticks", validity: "6 Months" },
+  { id: "stick-minichoco-fd", name: "Mini Choco Bar", packSize: "1 pc", mrp: 15, category: "ice-cream", subcategory: "Sticks", validity: "6 Months" },
   { id: "stick-mango-duet", name: "Mango Duet", packSize: "1 pc", mrp: 40, category: "ice-cream", subcategory: "Sticks", validity: "6 Months" },
   { id: "stick-strawberry-duet", name: "Strawberry Duet", packSize: "1 pc", mrp: 40, category: "ice-cream", subcategory: "Sticks", validity: "6 Months" },
   { id: "stick-orange-bar", name: "Orange Bar", packSize: "1 pc", mrp: 10, category: "ice-cream", subcategory: "Sticks", validity: "6 Months" },
@@ -119,7 +119,7 @@ export const products: Product[] = [
   // ==================== NOVELTIES ====================
   { id: "novelty-matka-kulfi", name: "Matka Kulfi", packSize: "1 pc", mrp: 70, category: "ice-cream", subcategory: "Novelties", badge: "bestseller", validity: "6 Months" },
   { id: "novelty-snowball-vanilla", name: "Snow Ball Vanilla", packSize: "1 pc", mrp: 40, category: "ice-cream", subcategory: "Novelties", validity: "6 Months" },
-  { id: "novelty-plastic-cassata", name: "Plastic Cassata", packSize: "1 pc", mrp: 60, category: "ice-cream", subcategory: "Novelties", validity: "6 Months" },
+  { id: "novelty-plastic-cassata", name: "Cassata", packSize: "1 pc", mrp: 60, category: "ice-cream", subcategory: "Novelties", validity: "6 Months" },
 
   // ==================== CONES ====================
   { id: "cone-king-chocolate", name: "King Cone Chocolate", packSize: "1 pc", mrp: 60, category: "ice-cream", subcategory: "Cones", validity: "6 Months" },
