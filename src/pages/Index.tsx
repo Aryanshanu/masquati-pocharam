@@ -5,8 +5,7 @@ import Header from "@/components/Header";
 import CategoryNav from "@/components/CategoryNav";
 import SearchBar from "@/components/SearchBar";
 import ProductList from "@/components/ProductList";
-import FloatingCartButton from "@/components/FloatingCartButton";
-import FloatingFavoritesButton from "@/components/FloatingFavoritesButton";
+import BottomNav from "@/components/BottomNav";
 import CartDrawer from "@/components/CartDrawer";
 import FavoritesList from "@/components/FavoritesList";
 import CheckoutForm from "@/components/CheckoutForm";
@@ -24,7 +23,7 @@ const IndexContent = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background pb-16">
       <Header />
       <CategoryNav
         activeCategory={activeCategory}
@@ -39,8 +38,10 @@ const IndexContent = () => {
         searchQuery={searchQuery}
         onCategoryInView={setActiveCategory}
       />
-      <FloatingFavoritesButton onClick={() => setIsFavoritesOpen(true)} />
-      <FloatingCartButton onClick={() => setIsCartOpen(true)} />
+      <BottomNav
+        onCartClick={() => setIsCartOpen(true)}
+        onFavoritesClick={() => setIsFavoritesOpen(true)}
+      />
       <CartDrawer
         open={isCartOpen}
         onOpenChange={setIsCartOpen}
