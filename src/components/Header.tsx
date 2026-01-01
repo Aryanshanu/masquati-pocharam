@@ -1,6 +1,5 @@
 import { MapPin, Phone, Sparkles } from "lucide-react";
 import masqatiLogo from "@/assets/masqati-logo.png";
-import NewYearOfferBanner from "@/components/NewYearOfferBanner";
 
 const Header = () => {
 
@@ -21,9 +20,6 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50">
-      {/* New Year Offer Banner - Always visible */}
-      <NewYearOfferBanner />
-
       {/* Premium Main Banner */}
       <div className="relative bg-gradient-to-br from-navy via-navy/95 to-navy overflow-hidden">
         {/* Decorative Elements */}
