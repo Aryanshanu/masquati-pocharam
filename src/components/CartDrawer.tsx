@@ -1,8 +1,7 @@
-import { Minus, Plus, Trash2, X, Gift, Sparkles } from "lucide-react";
+import { Minus, Plus, Trash2, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { useCart } from "@/context/CartContext";
-import { useNewYearOffer, OFFER_COMBO_PRICE } from "@/hooks/useNewYearOffer";
 
 interface CartDrawerProps {
   open: boolean;
@@ -12,7 +11,11 @@ interface CartDrawerProps {
 
 const CartDrawer = ({ open, onOpenChange, onCheckout }: CartDrawerProps) => {
   const { items, updateQuantity, removeFromCart, clearCart } = useCart();
-  const offerStatus = useNewYearOffer(items);
+
+  const cartTotal = items.reduce(
+    (sum, item) => sum + item.product.mrp * item.quantity,
+    0
+  );
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -104,59 +107,11 @@ const CartDrawer = ({ open, onOpenChange, onCheckout }: CartDrawerProps) => {
 
         {items.length > 0 && (
           <div className="border-t border-border pt-4 space-y-4">
-            {/* Offer Status */}
-            {offerStatus.isEligible ? (
-              <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-xl p-3">
-                <div className="flex items-center gap-2 text-green-700 dark:text-green-400">
-                  <Gift className="h-5 w-5" />
-                  <span className="font-body font-semibold text-sm">
-                    🎉 New Year Offer Applied!
-                  </span>
-                </div>
-                <p className="text-green-600 dark:text-green-500 text-xs font-body mt-1">
-                  {offerStatus.offerType === "ice-cream"
-                    ? "1 Kg Cake + 1L Ice Cream @ ₹599"
-                    : "1 Kg Cake + Namkeen @ ₹599"}
-                </p>
-              </div>
-            ) : offerStatus.missingMessage ? (
-              <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-3">
-                <div className="flex items-center gap-2 text-amber-700 dark:text-amber-400">
-                  <Sparkles className="h-5 w-5" />
-                  <span className="font-body font-semibold text-sm">
-                    New Year Offer
-                  </span>
-                </div>
-                <p className="text-amber-600 dark:text-amber-500 text-xs font-body mt-1">
-                  {offerStatus.missingMessage}
-                </p>
-              </div>
-            ) : null}
-
-            {/* Totals */}
-            <div className="space-y-2">
-              {offerStatus.isEligible && offerStatus.savings > 0 && (
-                <>
-                  <div className="flex justify-between items-center text-muted-foreground">
-                    <span className="font-body text-sm">Subtotal</span>
-                    <span className="font-body text-sm line-through">
-                      ₹{offerStatus.originalTotal}
-                    </span>
-                  </div>
-                  <div className="flex justify-between items-center text-green-600">
-                    <span className="font-body text-sm">You Save</span>
-                    <span className="font-body text-sm font-semibold">
-                      -₹{offerStatus.savings}
-                    </span>
-                  </div>
-                </>
-              )}
-              <div className="flex justify-between items-center">
-                <span className="font-display text-xl font-semibold">Total</span>
-                <span className="font-display text-2xl font-bold text-primary">
-                  ₹{offerStatus.isEligible ? offerStatus.discountedTotal : offerStatus.originalTotal}
-                </span>
-              </div>
+            <div className="flex justify-between items-center">
+              <span className="font-display text-xl font-semibold">Total</span>
+              <span className="font-display text-2xl font-bold text-primary">
+                ₹{cartTotal}
+              </span>
             </div>
 
             <Button
