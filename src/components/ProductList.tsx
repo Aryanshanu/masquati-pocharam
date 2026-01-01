@@ -35,9 +35,9 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
 
   if (filteredProducts) {
     return (
-      <div className="container mx-auto px-4 pb-32">
-        <div className="mb-4">
-          <h2 className="font-display text-xl font-semibold text-foreground">
+      <div className="container mx-auto px-3 sm:px-4 pb-24">
+        <div className="mb-3 sm:mb-4">
+          <h2 className="font-display text-lg sm:text-xl font-semibold text-foreground">
             Search Results ({filteredProducts.length})
           </h2>
         </div>
@@ -48,7 +48,7 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
             </p>
           </div>
         ) : (
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-2 sm:gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -59,7 +59,7 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
   }
 
   return (
-    <div className="container mx-auto px-4 pb-32">
+    <div className="container mx-auto px-3 sm:px-4 pb-24">
       {categories.map((category) => {
         const categoryProducts = getProductsByCategory(category.id);
         if (categoryProducts.length === 0) return null;
@@ -70,15 +70,15 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
           <div
             key={category.id}
             ref={(el) => (categoryRefs.current[category.id] = el)}
-            className="mb-10 scroll-mt-40"
+            className="mb-8 sm:mb-10 scroll-mt-32 sm:scroll-mt-40"
           >
             {/* Category Header */}
-            <div className="flex items-center gap-3 mb-6 pb-2 border-b-2 border-primary/20">
-              <span className="text-2xl">{category.icon}</span>
-              <h2 className="font-display text-xl font-semibold text-foreground">
+            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 pb-2 border-b-2 border-primary/20">
+              <span className="text-xl sm:text-2xl">{category.icon}</span>
+              <h2 className="font-display text-lg sm:text-xl font-semibold text-foreground">
                 {category.name}
               </h2>
-              <span className="text-muted-foreground text-sm font-body ml-auto">
+              <span className="text-muted-foreground text-xs sm:text-sm font-body ml-auto">
                 {categoryProducts.length} items
               </span>
             </div>
@@ -89,10 +89,10 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
               if (subcatProducts.length === 0) return null;
 
               return (
-                <div key={subcategory} className="mb-6">
+                <div key={subcategory} className="mb-5 sm:mb-6">
                   {/* Subcategory Header */}
-                  <div className="flex items-center gap-2 mb-3">
-                    <h3 className="font-display text-base font-medium text-foreground/80">
+                  <div className="flex items-center gap-2 mb-2 sm:mb-3">
+                    <h3 className="font-display text-sm sm:text-base font-medium text-foreground/80">
                       {subcategory}
                     </h3>
                     <span className="text-muted-foreground text-xs font-body">
@@ -101,7 +101,7 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
                   </div>
 
                   {/* Products Grid */}
-                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  <div className="grid gap-2 sm:gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {subcatProducts.map((product) => (
                       <ProductCard key={product.id} product={product} />
                     ))}
