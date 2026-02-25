@@ -18,6 +18,7 @@ export interface Category {
 
 export const categories: Category[] = [
   { id: "ice-cream", name: "Ice Creams & Cakes", icon: "🍦" },
+  { id: "specials", name: "Masqati Specials", icon: "🍽️" },
   { id: "namkeen", name: "Namkeens & Snacks", icon: "🍿" },
   { id: "dairy", name: "Dairy Products", icon: "🥛" },
   { id: "others", name: "Sweets, Bakery & More", icon: "🍪" },
@@ -25,6 +26,7 @@ export const categories: Category[] = [
 
 export const subcategories: { [key: string]: string[] } = {
   "ice-cream": ["Ice Cream Cups", "Ice Cream Cakes", "Sticks", "Novelties", "Cones", "Premium Sticks", "Bulk Ripples"],
+  "specials": ["Chaat Specials", "Burgers", "Sandwiches & Sides", "Pizza", "Mocktails", "Shakes & Milkshakes"],
   "namkeen": ["Namkeens", "Mini Snacks"],
   "dairy": ["Fresh Milk", "Long Life Milk", "Curd", "Ghee"],
   "others": ["Paneer", "Khowa", "Butter", "Cream", "Flavoured Milk", "Beverages", "Sweets", "Biscuits", "Cookies", "Bread"],
@@ -247,6 +249,84 @@ export const products: Product[] = [
   { id: "bread-sandwich-800g", name: "Sandwich Bread", packSize: "800g", mrp: 80, category: "others", subcategory: "Bread", validity: "5 Days" },
   { id: "bread-pav", name: "Pav", packSize: "200g", mrp: 30, category: "others", subcategory: "Bread", validity: "5 Days" },
   { id: "bread-bun", name: "Bun", packSize: "90g", mrp: 15, category: "others", subcategory: "Bread", validity: "5 Days" },
+
+  // ==================== CATEGORY 5: MASQATI SPECIALS ====================
+  // CHAAT SPECIALS
+  { id: "sp-pani-puri", name: "Pani Puri", packSize: "1 Plate", mrp: 20, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-dahi-puri", name: "Dahi Puri", packSize: "1 Plate", mrp: 49, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-sev-puri", name: "Sev Puri", packSize: "1 Plate", mrp: 49, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-masala-puri", name: "Masala Puri", packSize: "1 Plate", mrp: 39, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-bhel-puri", name: "Bhel Puri", packSize: "1 Plate", mrp: 39, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-sweet-puri", name: "Sweet Puri", packSize: "1 Plate", mrp: 39, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-samosa-cutlet", name: "Samosa Cutlet", packSize: "1 Plate", mrp: 49, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-dahi-cutlet", name: "Dahi Cutlet", packSize: "1 Plate", mrp: 49, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-papdi-cutlet", name: "Papdi Cutlet", packSize: "1 Plate", mrp: 49, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-dahi-papdi", name: "Dahi Papdi", packSize: "1 Plate", mrp: 49, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-wada-pav", name: "Wada Pav", packSize: "1 Piece", mrp: 39, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-pav-bhaji", name: "Pav Bhaji", packSize: "1 Plate", mrp: 59, category: "specials", subcategory: "Chaat Specials", badge: "bestseller" },
+  { id: "sp-masala-pav-bhaji", name: "Masala Pav Bhaji", packSize: "1 Plate", mrp: 59, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-butter-pav-bhaji", name: "Butter Pav Bhaji", packSize: "1 Plate", mrp: 69, category: "specials", subcategory: "Chaat Specials" },
+  { id: "sp-cheese-pav-bhaji", name: "Cheese Pav Bhaji", packSize: "1 Plate", mrp: 69, category: "specials", subcategory: "Chaat Specials", badge: "hot" },
+
+  // BURGERS
+  { id: "sp-aloo-tikki-burger", name: "Aloo Tikki Burger", packSize: "1 Piece", mrp: 69, category: "specials", subcategory: "Burgers" },
+  { id: "sp-veg-cheese-burger", name: "Veg Cheese Burger", packSize: "1 Piece", mrp: 89, category: "specials", subcategory: "Burgers" },
+  { id: "sp-paneer-cheese-burger", name: "Paneer Cheese Burger", packSize: "1 Piece", mrp: 99, category: "specials", subcategory: "Burgers", badge: "hot" },
+  { id: "sp-corn-cheese-burger", name: "Corn Cheese Burger", packSize: "1 Piece", mrp: 99, category: "specials", subcategory: "Burgers" },
+
+  // SANDWICHES & SIDES
+  { id: "sp-veg-cheese-sandwich", name: "Veg Cheese Sandwich", packSize: "1 Piece", mrp: 59, category: "specials", subcategory: "Sandwiches & Sides" },
+  { id: "sp-bombay-masala-sandwich", name: "Bombay Masala Sandwich", packSize: "1 Piece", mrp: 69, category: "specials", subcategory: "Sandwiches & Sides" },
+  { id: "sp-garlic-bread", name: "Garlic Bread", packSize: "1 Plate", mrp: 69, category: "specials", subcategory: "Sandwiches & Sides" },
+  { id: "sp-paneer-cheese-sandwich", name: "Paneer Cheese Sandwich", packSize: "1 Piece", mrp: 79, category: "specials", subcategory: "Sandwiches & Sides" },
+  { id: "sp-corn-cheese-sandwich", name: "Corn Cheese Sandwich", packSize: "1 Piece", mrp: 79, category: "specials", subcategory: "Sandwiches & Sides" },
+  { id: "sp-triple-bread-sandwich", name: "Triple Bread Sandwich", packSize: "1 Piece", mrp: 79, category: "specials", subcategory: "Sandwiches & Sides" },
+  { id: "sp-masala-french-fries", name: "Masala French Fries", packSize: "1 Plate", mrp: 89, category: "specials", subcategory: "Sandwiches & Sides", badge: "bestseller" },
+  { id: "sp-cheese-corn-balls", name: "Cheese Corn Balls", packSize: "1 Plate", mrp: 99, category: "specials", subcategory: "Sandwiches & Sides" },
+
+  // PIZZA
+  { id: "sp-margherita-pizza", name: "Margherita Pizza", packSize: "1 Piece", mrp: 99, category: "specials", subcategory: "Pizza" },
+  { id: "sp-onion-capsicum-pizza", name: "Onion & Capsicum Pizza", packSize: "1 Piece", mrp: 99, category: "specials", subcategory: "Pizza" },
+  { id: "sp-corn-cheese-pizza", name: "Corn & Cheese Pizza", packSize: "1 Piece", mrp: 99, category: "specials", subcategory: "Pizza" },
+  { id: "sp-veg-pizza", name: "Veg Pizza", packSize: "1 Piece", mrp: 119, category: "specials", subcategory: "Pizza" },
+  { id: "sp-double-cheese-margherita", name: "Double Cheese Margherita", packSize: "1 Piece", mrp: 129, category: "specials", subcategory: "Pizza", badge: "hot" },
+  { id: "sp-paneer-pizza", name: "Paneer Pizza", packSize: "1 Piece", mrp: 129, category: "specials", subcategory: "Pizza" },
+  { id: "sp-paneer-tikka-pizza", name: "Paneer Tikka Pizza", packSize: "1 Piece", mrp: 150, category: "specials", subcategory: "Pizza" },
+  { id: "sp-peri-peri-paneer-pizza", name: "Peri Peri Paneer Pizza", packSize: "1 Piece", mrp: 159, category: "specials", subcategory: "Pizza" },
+  { id: "sp-mushroom-pizza", name: "Mushroom Pizza", packSize: "1 Piece", mrp: 199, category: "specials", subcategory: "Pizza", badge: "new" },
+
+  // MOCKTAILS
+  { id: "sp-virgin-mojito", name: "Virgin Mojito", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails", badge: "bestseller" },
+  { id: "sp-blue-lagoon", name: "Blue Lagoon", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-green-apple-soda", name: "Green Apple Soda", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-watermelon-slush", name: "Watermelon Slush", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-peach-iced-tea", name: "Peach Iced Tea", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-lemon-mint-cooler", name: "Lemon Mint Cooler", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-spiced-guava", name: "Spiced Guava", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-banana-crush", name: "Banana Crush", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-black-currant-crush", name: "Black Currant Crush", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-blueberry-crush", name: "Blueberry Crush", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-kiwi-crush", name: "Kiwi Crush", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-orange-crush", name: "Orange Crush", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-strawberry-crush", name: "Strawberry Crush", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+  { id: "sp-strawberry-fruit-crush", name: "Strawberry Fruit Crush", packSize: "1 Glass", mrp: 59, category: "specials", subcategory: "Mocktails" },
+
+  // SHAKES & MILKSHAKES
+  { id: "sp-shana-shake", name: "Shana Shake", packSize: "1 Glass", mrp: 69, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-oreo-shana-shake", name: "Oreo Shana Shake", packSize: "1 Glass", mrp: 79, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-vanilla-milkshake", name: "Vanilla Milkshake", packSize: "1 Glass", mrp: 79, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-strawberry-milkshake", name: "Strawberry Milkshake", packSize: "1 Glass", mrp: 79, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-mango-milkshake", name: "Mango Milkshake", packSize: "1 Glass", mrp: 79, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-chocolate-milkshake", name: "Chocolate Milkshake", packSize: "1 Glass", mrp: 79, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-butterscotch-milkshake", name: "Butterscotch Milkshake", packSize: "1 Glass", mrp: 79, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-pista-milkshake", name: "Pista Milkshake", packSize: "1 Glass", mrp: 79, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-rose-milkshake", name: "Rose Milkshake", packSize: "1 Glass", mrp: 79, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-nutella-shake", name: "Nutella Shake", packSize: "1 Glass", mrp: 99, category: "specials", subcategory: "Shakes & Milkshakes", badge: "hot" },
+  { id: "sp-oreo-shake", name: "Oreo Shake", packSize: "1 Glass", mrp: 99, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-kitkat-shake", name: "KitKat Shake", packSize: "1 Glass", mrp: 99, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-snickers-shake", name: "Snickers Shake", packSize: "1 Glass", mrp: 99, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-choco-pie-shake", name: "Choco Pie Shake", packSize: "1 Glass", mrp: 99, category: "specials", subcategory: "Shakes & Milkshakes" },
+  { id: "sp-ferrero-rocher-shake", name: "Ferrero Rocher Thick Shake", packSize: "1 Glass", mrp: 150, category: "specials", subcategory: "Shakes & Milkshakes", badge: "new" },
 ];
 
 // Helper function to get products by category

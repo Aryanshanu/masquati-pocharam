@@ -2,6 +2,7 @@ import { useState } from "react";
 import { CartProvider } from "@/context/CartContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 import Header from "@/components/Header";
+import HeroSection from "@/components/HeroSection";
 import CategoryNav from "@/components/CategoryNav";
 import SearchBar from "@/components/SearchBar";
 import ProductList from "@/components/ProductList";
@@ -25,6 +26,7 @@ const IndexContent = () => {
   return (
     <div className="min-h-screen bg-background pb-20">
       <Header />
+      <HeroSection />
       <CategoryNav
         activeCategory={activeCategory}
         onCategoryChange={(id) => {
