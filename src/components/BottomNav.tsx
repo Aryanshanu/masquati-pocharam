@@ -13,18 +13,18 @@ const BottomNav = ({ onCartClick, onFavoritesClick }: BottomNavProps) => {
   const favCount = favorites.length;
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-50 glass-effect rounded-t-2xl border-t border-gold/20 safe-area-bottom">
-      <div className="container mx-auto px-3 py-2.5">
-        <div className="flex items-center gap-2">
+    <div className="fixed bottom-4 left-4 right-4 z-50 safe-area-bottom">
+      <div className="max-w-md mx-auto">
+        <div className="flex items-center gap-2.5 glass-effect rounded-full px-2.5 py-2 floating-shadow border border-border/50">
           {/* Favorites Button */}
           <button
             onClick={onFavoritesClick}
-            className="relative flex items-center justify-center h-11 w-11 rounded-full border border-border bg-card hover:bg-secondary active:scale-95 transition-all"
+            className="relative flex items-center justify-center h-10 w-10 rounded-full bg-card hover:bg-secondary active:scale-95 transition-all shadow-sm"
             aria-label="View favorites"
           >
-            <Heart className={`h-4.5 w-4.5 ${favCount > 0 ? 'text-destructive fill-destructive' : 'text-muted-foreground'}`} />
+            <Heart className={`h-4 w-4 ${favCount > 0 ? 'text-destructive fill-destructive' : 'text-muted-foreground'}`} />
             {favCount > 0 && (
-              <span className="absolute -top-1 -right-1 gold-gradient text-foreground text-[10px] font-bold rounded-full h-4.5 w-4.5 flex items-center justify-center min-w-[18px] min-h-[18px]">
+              <span className="absolute -top-1 -right-1 gold-gradient text-foreground text-[9px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
                 {favCount > 9 ? "9+" : favCount}
               </span>
             )}
@@ -33,22 +33,22 @@ const BottomNav = ({ onCartClick, onFavoritesClick }: BottomNavProps) => {
           {/* Cart Button */}
           <button
             onClick={onCartClick}
-            className={`flex-1 flex items-center justify-between h-11 rounded-full px-4 active:scale-[0.98] transition-all font-body ${
+            className={`flex-1 flex items-center justify-between h-10 rounded-full px-4 active:scale-[0.98] transition-all font-body ${
               totalItems > 0
-                ? 'gold-gradient text-foreground shadow-md'
-                : 'bg-secondary text-secondary-foreground'
+                ? 'gold-gradient text-foreground shadow-sm'
+                : 'bg-card text-muted-foreground'
             }`}
           >
             <div className="flex items-center gap-2">
-              <ShoppingCart className="h-4.5 w-4.5" />
-              <span className="font-semibold text-sm">
-                {totalItems > 0 ? `${totalItems} items` : 'Cart is empty'}
+              <ShoppingCart className="h-4 w-4" />
+              <span className="font-semibold text-xs">
+                {totalItems > 0 ? `${totalItems} items` : 'Cart empty'}
               </span>
             </div>
             {totalItems > 0 && (
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1">
                 <span className="font-display font-bold text-sm">₹{totalAmount}</span>
-                <ArrowRight className="h-3.5 w-3.5" />
+                <ArrowRight className="h-3 w-3" />
               </div>
             )}
           </button>

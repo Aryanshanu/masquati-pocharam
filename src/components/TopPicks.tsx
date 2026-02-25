@@ -3,34 +3,38 @@ import { featuredProducts, getProductById } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useFavorites } from "@/context/FavoritesContext";
 
+const collectionColors: Record<string, string> = {
+  "☀️ Summer Specials": "from-amber-500/10 to-orange-500/5",
+  "⭐ Masqati Specials": "from-gold/10 to-gold-dark/5",
+  "🧒 Kids Favourites": "from-pink-500/10 to-purple-500/5",
+};
+
 const TopPicks = () => {
   const { addToCart, getItemQuantity } = useCart();
   const { toggleFavorite, isFavorite } = useFavorites();
 
   return (
-    <section className="bg-primary py-8 border-t border-gold/10">
+    <section className="py-8 bg-background">
       <div className="container mx-auto px-4">
         {/* Section Title */}
-        <div className="text-center mb-6">
-          <h2 className="font-display text-2xl md:text-3xl text-primary-foreground tracking-wide">
+        <div className="mb-6 animate-fade-in">
+          <h2 className="font-display text-2xl md:text-3xl text-foreground font-bold tracking-tight">
             Top Picks
           </h2>
-          <div className="w-16 h-0.5 gold-gradient mx-auto mt-2 rounded-full" />
+          <div className="w-10 h-[3px] gold-gradient mt-2 rounded-full" />
         </div>
 
         {/* Collections */}
-        <div className="space-y-6">
+        <div className="space-y-8">
           {Object.entries(featuredProducts).map(([collectionName, productIds]) => (
-            <div key={collectionName}>
+            <div key={collectionName} className="animate-fade-in-up">
               {/* Collection Label */}
-              <h3 className="font-display text-sm md:text-base text-gold mb-3 tracking-wide">
+              <h3 className="font-display text-base md:text-lg text-foreground mb-3 font-semibold">
                 {collectionName}
               </h3>
 
               {/* Horizontal Scroll Row */}
-              <div className="flex gap-3 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide"
-                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
-              >
+              <div className="flex gap-3 overflow-x-auto pb-3 snap-x snap-mandatory scrollbar-hide -mx-4 px-4">
                 {productIds.map((id) => {
                   const product = getProductById(id);
                   if (!product) return null;
@@ -40,48 +44,47 @@ const TopPicks = () => {
                   return (
                     <div
                       key={product.id}
-                      className="snap-start flex-shrink-0 w-[200px] bg-card rounded-2xl border-l-2 border-l-gold border border-border p-3 relative card-hover"
+                      className={`snap-start flex-shrink-0 w-[180px] rounded-2xl bg-gradient-to-br ${collectionColors[collectionName] || 'from-secondary to-muted/50'} p-3.5 relative card-hover border border-border/50`}
                     >
                       {/* Heart */}
                       <button
                         onClick={() => toggleFavorite(product.id)}
-                        className="absolute top-2 right-2 p-1.5 rounded-full bg-secondary/70 hover:bg-secondary transition-colors active:scale-90 z-10"
+                        className="absolute top-2.5 right-2.5 p-1.5 rounded-full bg-card/80 backdrop-blur-sm transition-all active:scale-90 z-10"
                         aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
                       >
                         <Heart
                           className={`h-3.5 w-3.5 transition-all duration-200 ${
                             favorited
-                              ? "text-destructive fill-destructive"
+                              ? "text-destructive fill-destructive animate-heart-pop"
                               : "text-muted-foreground hover:text-destructive"
                           }`}
                         />
                       </button>
 
                       {/* Info */}
-                      <div className="pr-8">
-                        <h4 className="font-display text-sm font-normal text-foreground leading-tight line-clamp-2">
+                      <div className="pr-7">
+                        <h4 className="font-display text-sm font-semibold text-foreground leading-tight line-clamp-2">
                           {product.name}
                         </h4>
-                        <span className="inline-block mt-1 px-1.5 py-0.5 bg-secondary rounded text-muted-foreground text-[10px] font-body font-medium">
+                        <span className="inline-block mt-1.5 px-2 py-0.5 bg-card/60 backdrop-blur-sm rounded-full text-muted-foreground text-[10px] font-body font-medium">
                           {product.packSize}
                         </span>
                       </div>
 
                       {/* Price + Add */}
-                      <div className="mt-2 flex items-center justify-between">
-                        <p className="font-display text-lg text-gold">
+                      <div className="mt-3 flex items-center justify-between">
+                        <p className="font-display text-lg text-gold font-bold">
                           ₹{product.salePrice || product.mrp}
                         </p>
                         <button
                           onClick={() => addToCart(product)}
-                          className={`flex items-center gap-1 text-xs font-body font-semibold px-3 py-1.5 rounded-full active:scale-95 transition-all shadow-sm ${
+                          className={`flex items-center justify-center w-8 h-8 rounded-full active:scale-90 transition-all shadow-sm ${
                             inCart
                               ? "bg-primary text-primary-foreground"
                               : "gold-gradient text-foreground hover:opacity-90"
                           }`}
                         >
-                          <Plus className="h-3 w-3" />
-                          {inCart ? "More" : "Add"}
+                          <Plus className="h-4 w-4" />
                         </button>
                       </div>
                     </div>
