@@ -35,20 +35,23 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
 
   if (filteredProducts) {
     return (
-      <div className="container mx-auto px-3 sm:px-4 pb-24">
-        <div className="mb-3 sm:mb-4">
-          <h2 className="font-display text-lg sm:text-xl font-semibold text-foreground">
-            Search Results ({filteredProducts.length})
+      <div className="container mx-auto px-3 pb-24">
+        <div className="mb-4">
+          <h2 className="font-display text-xl text-foreground">
+            Search Results
           </h2>
+          <span className="inline-block mt-1 px-2.5 py-0.5 bg-secondary rounded-full text-muted-foreground text-xs font-body font-medium">
+            {filteredProducts.length} found
+          </span>
         </div>
         {filteredProducts.length === 0 ? (
-          <div className="text-center py-12">
+          <div className="text-center py-16">
             <p className="text-muted-foreground font-body">
               No products found for "{searchQuery}"
             </p>
           </div>
         ) : (
-          <div className="grid gap-2 sm:gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {filteredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -59,7 +62,7 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
   }
 
   return (
-    <div className="container mx-auto px-3 sm:px-4 pb-24">
+    <div className="container mx-auto px-3 pb-24">
       {categories.map((category) => {
         const categoryProducts = getProductsByCategory(category.id);
         if (categoryProducts.length === 0) return null;
@@ -70,15 +73,20 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
           <div
             key={category.id}
             ref={(el) => (categoryRefs.current[category.id] = el)}
-            className="mb-8 sm:mb-10 scroll-mt-32 sm:scroll-mt-40"
+            className="mb-10 scroll-mt-28"
           >
             {/* Category Header */}
-            <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-6 pb-2 border-b-2 border-primary/20">
-              <span className="text-xl sm:text-2xl">{category.icon}</span>
-              <h2 className="font-display text-lg sm:text-xl font-semibold text-foreground">
-                {category.name}
-              </h2>
-              <span className="text-muted-foreground text-xs sm:text-sm font-body ml-auto">
+            <div className="flex items-center justify-between mb-5">
+              <div className="flex items-center gap-2.5">
+                <span className="text-2xl">{category.icon}</span>
+                <div>
+                  <h2 className="font-display text-xl text-foreground">
+                    {category.name}
+                  </h2>
+                  <div className="h-0.5 w-12 bg-gold mt-1 rounded-full" />
+                </div>
+              </div>
+              <span className="px-2.5 py-0.5 bg-secondary rounded-full text-muted-foreground text-xs font-body font-medium">
                 {categoryProducts.length} items
               </span>
             </div>
@@ -89,19 +97,19 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
               if (subcatProducts.length === 0) return null;
 
               return (
-                <div key={subcategory} className="mb-5 sm:mb-6">
+                <div key={subcategory} className="mb-6">
                   {/* Subcategory Header */}
-                  <div className="flex items-center gap-2 mb-2 sm:mb-3">
-                    <h3 className="font-display text-sm sm:text-base font-medium text-foreground/80">
+                  <div className="flex items-center gap-2 mb-3">
+                    <h3 className="font-body text-xs font-semibold uppercase tracking-widest text-gold">
                       {subcategory}
                     </h3>
-                    <span className="text-muted-foreground text-xs font-body">
-                      ({subcatProducts.length})
+                    <span className="text-muted-foreground text-[10px] font-body px-1.5 py-0.5 bg-secondary rounded-full">
+                      {subcatProducts.length}
                     </span>
                   </div>
 
                   {/* Products Grid */}
-                  <div className="grid gap-2 sm:gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                  <div className="grid gap-3 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                     {subcatProducts.map((product) => (
                       <ProductCard key={product.id} product={product} />
                     ))}

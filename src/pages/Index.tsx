@@ -23,7 +23,7 @@ const IndexContent = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-16">
+    <div className="min-h-screen bg-background pb-20">
       <Header />
       <CategoryNav
         activeCategory={activeCategory}
