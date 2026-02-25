@@ -1,140 +1,73 @@
 
 
-## Premium UI Redesign -- Masqati Catalogue
+## Plan: Landing Page Hero Section + Specials Menu + Map Update
 
-### What Changes
-
-The entire UI will be redesigned with a luxurious, modern aesthetic. The bulky header will be replaced with a slim, elegant top bar, and the category navigation (as shown in your screenshot) becomes the primary sticky header. Every component gets a premium visual overhaul.
-
----
-
-### 1. Slim Top Bar + Category Nav as Fixed Header
-
-**Current problem:** The header takes up too much vertical space with logo, tagline, highlights, and contact info all stacked. The category nav sits below it.
-
-**New approach:**
-- **Slim top bar** (single row): Logo (small, left-aligned) + tagline text + WhatsApp button + MapPin icon (right-aligned). About 48px tall on mobile.
-- **Category Nav becomes the main sticky header** directly below the top bar, matching your screenshot -- pills with icons, centered, with the active one in navy/dark style and inactive ones in light cream/gray.
-- Both bars stick to top together, but take up much less space than before.
-- Remove: product highlights row, trust badge, phone numbers from header, sparkles, gold decorative blurs.
-
-### 2. New Premium Color & Typography Theme
-
-**File: `src/index.css`**
-
-Update the color palette for a warmer, more refined look:
-- Background: Warm off-white `#FAFAF7` (subtle warm tint)
-- Cards: Pure white with subtle warm shadow
-- Primary: Deep charcoal navy `#1B2D45` (richer, darker)
-- Accent/CTA: Warm amber-gold gradient feel `#D4A853`
-- Softer borders, more generous whitespace
-- Add a subtle grain/texture feel via a CSS background pattern on body
-- Import "DM Serif Display" as a more premium display font alternative alongside Playfair
-
-### 3. Redesigned ProductCard -- Elevated & Luxurious
-
-**File: `src/components/ProductCard.tsx`**
-
-- Add a subtle left gold accent bar on each card (2px gold left border)
-- Softer rounded corners (rounded-2xl)
-- Slightly more padding, better spacing
-- Price in larger, bolder display font with gold color
-- "Add" button: Pill-shaped with gold gradient background, subtle shadow, smooth hover animation
-- Quantity controls: Sleeker pill with better contrast
-- Heart icon: Positioned top-right with a subtle circular backdrop
-- Add subtle hover elevation effect (translate-y and shadow increase)
-- Pack size styled as a muted tag/chip instead of plain text
-
-### 4. Enhanced Category Nav (Matching Screenshot)
-
-**File: `src/components/CategoryNav.tsx`**
-
-- Center the pills horizontally (justify-center on desktop, scroll on mobile)
-- Active pill: Dark navy with white text, rounded-full, subtle shadow
-- Inactive pills: Light cream/white background, muted text, rounded-full
-- Slightly larger icons, better spacing between icon and text
-- Add a subtle bottom border/shadow separator below the nav
-- Smooth transition animations on active state change
-
-### 5. Refined SearchBar
-
-**File: `src/components/SearchBar.tsx`**
-
-- Softer border, larger border-radius
-- Subtle inner shadow for depth
-- Placeholder text in italic for elegance
-- Search icon in gold color
-- On focus: gold ring instead of default accent ring
-
-### 6. Product List Section Headers
-
-**File: `src/components/ProductList.tsx`**
-
-- Category headers: Display font, larger, with a thin gold underline decoration
-- Subcategory headers: Uppercase small caps, letter-spacing, muted gold color
-- Item count badge styled as a small rounded pill
-- More breathing room between sections
-
-### 7. Premium Bottom Nav
-
-**File: `src/components/BottomNav.tsx`**
-
-- Frosted glass effect (backdrop-blur + semi-transparent background)
-- Cart button: Gold gradient when items present, with a subtle glow
-- Favorites button: Refined circular shape with subtle border
-- Rounded top corners on the bar itself (rounded-t-2xl)
-- Add a thin gold top border line
-
-### 8. Cart Drawer & Checkout Premium Polish
-
-**Files: `src/components/CartDrawer.tsx`, `src/components/CheckoutForm.tsx`**
-
-- Cart drawer: Warmer background tint, gold accents on total
-- Cart items: Card-style rows with subtle shadow instead of flat colored bg
-- Checkout dialog: More spacious, gold accent on "Place Order" button
-- Input fields: Warmer border color, gold focus ring
-
-### 9. Favorites List Polish
-
-**File: `src/components/FavoritesList.tsx`**
-
-- Consistent with the new card style
-- Gold accent on "Add" buttons
-
-### 10. CSS & Tailwind Config Updates
-
-**Files: `src/index.css`, `tailwind.config.ts`**
-
-- Add new font import (DM Serif Display)
-- Update CSS variables for refined palette
-- Add utility classes: `.glass-effect`, `.gold-gradient`, `.card-hover`
-- Add keyframe for subtle float/pulse animation on CTA
-- Add smooth page transition feel
+### Overview
+Add a proper landing page hero section with brand info and imagery, add the full "Masqati Specials" food & beverages menu as a new category, and update the Google Maps location link.
 
 ---
 
-### Technical Summary
+### 1. Update Google Maps Location Link
+**File: `src/components/Header.tsx`**
+- Change the maps URL from the old short link to the new full Google Maps link provided
+
+### 2. Create Hero/Landing Section Component
+**File: `src/components/HeroSection.tsx`** (NEW)
+- A visually rich hero section that appears at the top of the page (below header, above products)
+- Content:
+  - Large brand name "MASQATI" with tagline "50+ Years of Sweet Legacy"
+  - "Pocharam, Ghatkesar" location text
+  - Brief brand description: premium ice creams, dairy, namkeens, and now food & beverages
+  - A Google Maps embed or styled map card with the location link
+  - Call-to-action buttons: "Browse Menu" (scrolls down) and "Order on WhatsApp"
+- Design: Uses the existing premium navy/gold theme, full-width, with a warm gradient background or pattern
+
+### 3. Add "Masqati Specials" Category & Products
+**File: `src/data/products.ts`**
+- Add new category: `{ id: "specials", name: "Masqati Specials", icon: "🍽️" }`
+- Add subcategories: "Chaat Specials", "Burgers", "Sandwiches & Sides", "Pizza", "Mocktails", "Shakes & Milkshakes"
+- Add ALL products from the user's menu:
+  - 15 Chaat items (Pani Puri to Cheese Pav Bhaji)
+  - 4 Burgers
+  - 8 Sandwiches & Sides
+  - 9 Pizzas
+  - 14 Mocktails (all at Rs.59)
+  - 15 Shakes & Milkshakes
+- Total: ~65 new products
+
+### 4. Update Index Page Layout
+**File: `src/pages/Index.tsx`**
+- Import and render `HeroSection` between Header/CategoryNav and SearchBar/ProductList
+- The hero shows by default; scrolling past it reveals the product catalogue
+
+### 5. Update CategoryNav Default
+- Set "specials" or keep "ice-cream" as default -- will keep "ice-cream" as default since Specials is a new addition, but it will appear as first or last tab in the nav
+
+---
+
+### Technical Details
 
 ```text
-Files Modified (10):
-  src/index.css              -- New color palette, fonts, utility classes
-  tailwind.config.ts         -- New font family, extended colors, animations
-  src/components/Header.tsx  -- Slim single-row top bar
-  src/components/CategoryNav.tsx -- Premium pills matching screenshot
-  src/components/SearchBar.tsx   -- Gold accents, refined style
-  src/components/ProductCard.tsx -- Left gold bar, hover effects, premium layout
-  src/components/ProductList.tsx -- Elegant section headers
-  src/components/BottomNav.tsx   -- Frosted glass, gold gradient cart
-  src/components/CartDrawer.tsx  -- Warm styling, gold accents
-  src/components/CheckoutForm.tsx -- Premium form styling
-  src/components/FavoritesList.tsx -- Consistent premium cards
-  src/pages/Index.tsx        -- Minor layout spacing adjustments
+Files Created (1):
+  src/components/HeroSection.tsx    -- Brand hero with logo, tagline, map card, CTA buttons
+
+Files Modified (3):
+  src/components/Header.tsx         -- Update Google Maps URL
+  src/data/products.ts              -- Add "specials" category + ~65 new food products
+  src/pages/Index.tsx               -- Add HeroSection component to page layout
 ```
 
-### Result
-- Header shrinks from ~180px to ~100px (top bar + category nav)
-- Every component gets a cohesive luxury aesthetic
-- Gold accents throughout for brand consistency
-- Better whitespace and typography hierarchy
-- Smooth hover/tap micro-interactions
-- Mobile-first, touch-friendly throughout
+### Hero Section Design
+- Full-width section with navy background and subtle gold pattern/gradient
+- Masqati logo centered (larger version)
+- "50+ Years of Sweet Legacy" tagline in gold serif font
+- Location card with embedded map preview (static image linking to Google Maps)
+- Two CTA buttons: "Explore Menu" (gold gradient) and "WhatsApp Order" (green)
+- Responsive: stacks vertically on mobile, side-by-side on desktop
+
+### Specials Menu Structure
+- Category appears in the nav alongside Ice Creams, Namkeens, Dairy, and Others
+- Each subcategory (Chaat, Burgers, Pizza, etc.) has its own section header
+- Mocktails all share the same price (Rs.59) with packSize "1 Glass"
+- Shakes have varying prices, packSize "1 Glass"
+- Food items use packSize "1 Plate" or "1 Piece" as appropriate
