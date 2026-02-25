@@ -1,7 +1,7 @@
 import { MapPin, ChevronDown } from "lucide-react";
 import masqatiLogo from "@/assets/masqati-logo.png";
 
-const MAPS_URL = "https://www.google.com/maps/place/Masqati+Ice+Cream+Parlour+-+Pocharam/@17.4454102,78.6397626,17z/data=!3m1!4b1!4m6!3m5!1s0x3bcb9db6889388a9:0xf94a56debefa0510!8m2!3d17.4454051!4d78.6423375!16s%2Fg%2F11ysz263r2?entry=ttu&g_ep=EgoyMDI2MDIyMi4wIKXMDSoASAFQAw%3D%3D";
+const MAPS_URL = "https://maps.app.goo.gl/YhsGzpvjSL4ti5NE6";
 
 const HeroSection = () => {
   const handleWhatsApp = () => {

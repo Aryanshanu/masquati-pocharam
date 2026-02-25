@@ -3,6 +3,7 @@ import { CartProvider } from "@/context/CartContext";
 import { FavoritesProvider } from "@/context/FavoritesContext";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import TopPicks from "@/components/TopPicks";
 import CategoryNav from "@/components/CategoryNav";
 import SearchBar from "@/components/SearchBar";
 import ProductList from "@/components/ProductList";
@@ -27,6 +28,7 @@ const IndexContent = () => {
     <div className="min-h-screen bg-background pb-20">
       <Header />
       <HeroSection />
+      <TopPicks />
       <CategoryNav
         activeCategory={activeCategory}
         onCategoryChange={(id) => {

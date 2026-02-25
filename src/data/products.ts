@@ -345,3 +345,15 @@ export const getSubcategoriesForCategory = (categoryId: string): string[] => {
   const subcats = [...new Set(categoryProducts.map(p => p.subcategory))];
   return subcats;
 };
+
+// Helper to get a product by ID
+export const getProductById = (id: string): Product | undefined => {
+  return products.find((p) => p.id === id);
+};
+
+// Featured product collections for Top Picks
+export const featuredProducts: Record<string, string[]> = {
+  "☀️ Summer Specials": ["ic-mango-500ml", "sp-watermelon-slush", "sp-lemon-mint-cooler", "sp-strawberry-milkshake"],
+  "⭐ Masqati Specials": ["sp-pani-puri", "sp-pav-bhaji", "sp-double-cheese-margherita", "sp-ferrero-rocher-shake"],
+  "🧒 Kids Favourites": ["stick-chacobar-dairy", "ic-vanilla-100ml", "sp-oreo-shake"],
+};
