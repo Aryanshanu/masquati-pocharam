@@ -195,12 +195,12 @@
   /* Instagram story ring */
   .story-ring {
     background: linear-gradient(135deg, hsl(var(--pink)), hsl(var(--gold)), hsl(var(--pink-light)));
-    padding: 2.5px;
+    padding: 3px;
     border-radius: 9999px;
   }
 
   .story-ring-inner {
-    background: hsl(var(--background));
+    background: hsl(var(--navy-dark));
     border-radius: 9999px;
     padding: 2px;
   }

@@ -59,7 +59,7 @@ const FavoritesList = ({ open, onOpenChange }: FavoritesListProps) => {
                       <Button
                         size="sm"
                         onClick={() => addToCart(product)}
-                        className="gold-gradient text-foreground hover:opacity-90 rounded-full font-body font-semibold text-xs active:scale-95 border-0 shadow-sm h-8"
+                        className="pink-gold-gradient text-white hover:opacity-90 rounded-full font-body font-semibold text-xs active:scale-95 border-0 shadow-sm h-8"
                       >
                         <Plus className="h-3 w-3 mr-1" />
                         Add

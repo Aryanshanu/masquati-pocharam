@@ -18,7 +18,7 @@ const CategoryNav = ({ activeCategory, onCategoryChange }: CategoryNavProps) => 
               className={cn(
                 "flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap transition-all duration-300 font-body text-xs font-semibold snap-start active:scale-95 relative",
                 activeCategory === category.id
-                  ? "text-foreground"
+                  ? "text-foreground font-bold"
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
