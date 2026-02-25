@@ -1,119 +1,96 @@
 
 
-## Add Pink to the Theme
+## Fix Weak Colors, Faded Elements, and Overdominating Shades
 
-### Overview
-Incorporate pink as a key accent color alongside the existing gold and navy, giving the Masqati brand a warmer, more vibrant, Instagram-friendly feel. Pink will be used for gradients, story rings, backgrounds, badges, and accent highlights throughout the app.
+Based on the screenshot, there are several visibility and contrast issues across the app. Here's everything that needs fixing:
+
+### Issues Identified
+
+1. **Hero description text** too faded at 60% opacity -- barely readable on dark navy
+2. **Location pill** text weak at 80% opacity, glass border nearly invisible
+3. **Story circle inner backgrounds** use `bg-secondary` (cream) which looks washed-out on dark navy -- needs a darker, richer inner fill
+4. **Story ring inner** uses `bg-background` (light cream) creating a harsh light gap inside the gradient ring on the dark hero
+5. **Category labels** below story circles too faded at 70% opacity
+6. **Scroll chevron** nearly invisible at `text-pink/40`
+7. **Radial glow overlay** at `opacity-25` making the pink/gold glow too subtle
+8. **"MASQATI" heading** could be brighter/whiter for more punch
+9. **Gold tagline** ("50+ Years...") slightly weak against dark navy
+10. **Top Picks add buttons** use `gold-gradient text-foreground` which is dark-on-gold and hard to read -- should be white text
+11. **Favorites "Add" buttons** also gold-gradient with dark text -- same readability issue
+12. **Cart drawer checkout button** same gold-gradient dark text issue
+13. **Product card "Add" button** uses pink-gold-gradient which is fine, but quantity stepper uses `bg-primary` (navy) making it hard to see on cards
 
 ---
 
-### 1. Add Pink CSS Variables and Utilities
+### Fixes by File
 
-**File: `src/index.css`**
+#### 1. `src/components/HeroSection.tsx`
 
-- Add new CSS custom properties for pink tones:
-  - `--pink: 340 75% 60%` (vibrant rose pink)
-  - `--pink-light: 340 65% 75%` (soft blush)
-  - `--pink-dark: 340 80% 45%` (deep rose)
-- Add utility classes:
-  - `.pink-gradient` -- gradient from pink to pink-light
-  - `.pink-gold-gradient` -- gradient blending pink into gold (hero, CTAs)
-- Update `.story-ring` to use a pink-to-gold gradient instead of pure gold
-- Update `.shimmer` to use pink tint instead of pure gold
-- Update background to a very subtle warm pink-cream tone: `--background: 350 15% 97%`
-- Update `--cream` to have a pink warmth: `--cream: 350 15% 97%`
-- Update `--ring` to pink: `--ring: 340 75% 60%`
+- **Description text**: Change `text-primary-foreground/60` to `text-primary-foreground/85` -- much more readable
+- **Location pill text**: Change `text-primary-foreground/80` to `text-primary-foreground/90`
+- **Location pill border**: Change `border-gold/20` to `border-pink/30` and hover to `border-pink/50` -- more visible
+- **Story ring inner**: Change `bg-background` to `bg-navy-dark` so it blends with the hero instead of creating a light gap
+- **Story circle fill**: Change `bg-secondary` to `bg-navy-light` with lighter text -- richer look on dark background
+- **Category labels**: Change `text-primary-foreground/70` to `text-primary-foreground/90`
+- **Scroll chevron**: Change `text-pink/40` to `text-pink/70` and hover to `text-pink`
+- **Radial glow**: Increase `opacity-25` to `opacity-40` for stronger pink/gold atmosphere
+- **Tagline**: Make gold text slightly brighter by adding `drop-shadow` or using a lighter gold shade
 
-### 2. Add Pink to Tailwind Config
+#### 2. `src/components/TopPicks.tsx`
 
-**File: `tailwind.config.ts`**
+- **Add button** (not in cart): Change `gold-gradient text-foreground` to `pink-gold-gradient text-white` -- white text on gradient is much more readable
+- **Add button** (in cart): Keep `bg-primary text-primary-foreground` -- this is fine
+- **Collection title underline**: Change from `gold-gradient` to `pink-gold-gradient` for more vibrancy
 
-- Add `pink` color tokens under `extend.colors`:
-  ```
-  pink: {
-    DEFAULT: "hsl(var(--pink))",
-    light: "hsl(var(--pink-light))",
-    dark: "hsl(var(--pink-dark))",
-  }
-  ```
-- Add `pulse-pink` keyframe and animation (matching pulse-gold but with pink glow)
+#### 3. `src/components/ProductCard.tsx`
 
-### 3. Update Hero Section with Pink Accents
+- **Quantity stepper**: Change from `bg-primary` (dark navy, hard to see) to `pink-gold-gradient` -- more vibrant and visible
+- **Quantity text/icons**: Already white via `text-primary-foreground`, keep as-is
 
-**File: `src/components/HeroSection.tsx`**
+#### 4. `src/components/CartDrawer.tsx`
 
-- Change the hero background from pure navy gradient to a navy-with-pink-glow: radial gradient with pink tint at bottom
-- Story ring circles: pink-to-gold gradient border
-- "Explore Menu" button: pink-gold gradient instead of pure gold
-- Scroll chevron: pink tint
+- **Checkout button**: Change from `gold-gradient text-foreground` to `pink-gold-gradient text-white` -- much higher contrast and more vibrant
+- **Cart item prices**: Keep gold -- already readable on white card
 
-### 4. Update Top Picks with Pink Collection Accents
+#### 5. `src/components/FavoritesList.tsx`
 
-**File: `src/components/TopPicks.tsx`**
+- **"Add" buttons**: Change from `gold-gradient text-foreground` to `pink-gold-gradient text-white` -- consistent with rest of app
 
-- Update collection background gradients to include pink:
-  - "Summer Specials": amber-to-pink gradient
-  - "Kids Favourites": pink-to-purple gradient (already close, will enhance)
-  - "Masqati Specials": gold-to-pink gradient
+#### 6. `src/components/CategoryNav.tsx`
 
-### 5. Update Product Cards with Pink Touches
+- **Active tab text**: Currently just `text-foreground` -- add `font-bold` or make slightly larger for better visibility
+- **Inactive tab text**: `text-muted-foreground` is fine but could be slightly brighter
 
-**File: `src/components/ProductCard.tsx`**
+#### 7. `src/components/BottomNav.tsx`
 
-- "Add" button: pink-gold gradient instead of pure gold
-- Badge "Hot" and "New" pills: use pink shades
-- Heart button filled state: keep destructive red (already pink-ish)
+- **Empty cart text**: `text-muted-foreground` is fine
+- Already uses `pink-gold-gradient` when items present -- good
 
-### 6. Update Category Nav Active Indicator
+#### 8. `src/index.css`
 
-**File: `src/components/CategoryNav.tsx`**
-
-- Active tab underline: pink-gold gradient instead of pure gold
-
-### 7. Update Bottom Nav with Pink Accent
-
-**File: `src/components/BottomNav.tsx`**
-
-- Cart button when items present: pink-gold gradient
-- Favorites badge: pink gradient instead of pure gold
-
-### 8. Update Search Bar
-
-**File: `src/components/SearchBar.tsx`**
-
-- Search icon: pink color instead of gold
-- Focus ring: pink tint
-
-### 9. Update Header
-
-**File: `src/components/Header.tsx`**
-
-- "Est. 1970" text: pink instead of gold
-- Map pin icon: pink accent
+- **Story ring inner**: Update `.story-ring-inner` background from `hsl(var(--background))` to `hsl(var(--navy-dark))` so it works properly on the hero dark background
+- Increase `.story-ring` padding from `2.5px` to `3px` for a slightly thicker, more prominent gradient ring
 
 ---
 
 ### Technical Summary
 
 ```text
-Files Modified (9):
-  src/index.css                    -- Pink CSS variables + utility classes + updated gradients
-  tailwind.config.ts               -- Pink color tokens + pulse-pink animation
-  src/components/HeroSection.tsx   -- Pink radial glow, pink-gold story rings & CTAs
-  src/components/TopPicks.tsx      -- Pink-tinted collection backgrounds
-  src/components/ProductCard.tsx   -- Pink-gold "Add" button, pink badge accents
-  src/components/CategoryNav.tsx   -- Pink-gold active underline
-  src/components/BottomNav.tsx     -- Pink-gold cart button + pink badge
-  src/components/SearchBar.tsx     -- Pink search icon
-  src/components/Header.tsx        -- Pink accent on tagline & map icon
+Files Modified (7):
+  src/index.css                    -- Story ring inner bg to navy-dark, thicker ring
+  src/components/HeroSection.tsx   -- Boost all text opacities, stronger glow, dark story circles
+  src/components/TopPicks.tsx      -- Pink-gold add buttons with white text
+  src/components/ProductCard.tsx   -- Vibrant quantity stepper
+  src/components/CartDrawer.tsx    -- Pink-gold checkout button with white text
+  src/components/FavoritesList.tsx -- Pink-gold add buttons with white text
+  src/components/CategoryNav.tsx   -- Bolder active state
 ```
 
-### Color Palette (Updated)
-- **Navy**: Deep charcoal navy (primary, backgrounds) -- unchanged
-- **Gold**: Rich amber gold (prices, premium accents) -- kept for prices
-- **Pink**: Vibrant rose (CTAs, gradients, story rings, badges) -- NEW primary accent
-- **Pink-Gold Gradient**: Blended gradient used for buttons and highlights -- NEW
-- **Cream**: Warm pink-tinted off-white background -- slightly warmer
+### Before vs After Summary
+- **Faded text on hero**: 60-70% opacity becomes 85-90% -- clearly readable
+- **Invisible chevron**: 40% pink becomes 70% -- actually visible
+- **Washed-out story circles**: Cream-on-navy becomes navy-on-navy -- cohesive look
+- **Dark text on gold buttons**: Hard-to-read dark-on-gold becomes crisp white-on-pink-gold gradient
+- **Weak atmosphere glow**: 25% opacity becomes 40% -- warmer, richer feel
+- **Thin story rings**: 2.5px becomes 3px -- more prominent Instagram-style rings
 
-### Design Philosophy
-Pink replaces gold as the primary "pop" color for interactive elements (buttons, badges, indicators), while gold remains for prices and premium typography. This creates a warmer, more Instagram-native aesthetic with the pink-gold gradient adding visual richness.
