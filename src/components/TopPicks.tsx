@@ -4,9 +4,9 @@ import { useCart } from "@/context/CartContext";
 import { useFavorites } from "@/context/FavoritesContext";
 
 const collectionColors: Record<string, string> = {
-  "☀️ Summer Specials": "from-amber-500/10 to-orange-500/5",
-  "⭐ Masqati Specials": "from-gold/10 to-gold-dark/5",
-  "🧒 Kids Favourites": "from-pink-500/10 to-purple-500/5",
+  "☀️ Summer Specials": "from-amber-500/10 to-pink/10",
+  "⭐ Masqati Specials": "from-gold/10 to-pink/10",
+  "🧒 Kids Favourites": "from-pink/15 to-purple-500/10",
 };
 
 const TopPicks = () => {

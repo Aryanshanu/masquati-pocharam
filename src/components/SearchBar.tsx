@@ -10,7 +10,7 @@ const SearchBar = ({ searchQuery, onSearchChange }: SearchBarProps) => {
   return (
     <div className="container mx-auto px-4 py-3">
       <div className="relative">
-        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-gold" />
+        <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-pink" />
         <Input
           type="text"
           placeholder="Search products..."

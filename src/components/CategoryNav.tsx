@@ -26,7 +26,7 @@ const CategoryNav = ({ activeCategory, onCategoryChange }: CategoryNavProps) => 
               <span>{category.name.split('&')[0].trim()}</span>
               {/* Active underline indicator */}
               {activeCategory === category.id && (
-                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-[2.5px] gold-gradient rounded-full" />
+                <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-[2.5px] pink-gold-gradient rounded-full" />
               )}
             </button>
           ))}

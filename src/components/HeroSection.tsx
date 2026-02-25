@@ -17,9 +17,9 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden navy-gradient">
-      {/* Subtle radial glow */}
-      <div className="absolute inset-0 opacity-20" style={{
-        background: `radial-gradient(ellipse at 50% 0%, hsl(var(--gold) / 0.3) 0%, transparent 60%)`
+      {/* Subtle radial glow with pink */}
+      <div className="absolute inset-0 opacity-25" style={{
+        background: `radial-gradient(ellipse at 50% 100%, hsl(var(--pink) / 0.35) 0%, transparent 55%), radial-gradient(ellipse at 50% 0%, hsl(var(--gold) / 0.2) 0%, transparent 60%)`
       }} />
 
       <div className="relative container mx-auto px-4 pt-10 pb-6">
@@ -67,7 +67,7 @@ const HeroSection = () => {
           <div className="flex gap-3 mt-1">
             <button
               onClick={scrollToMenu}
-              className="gold-gradient text-primary font-body font-semibold text-sm px-7 py-3 rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95"
+              className="pink-gold-gradient text-white font-body font-semibold text-sm px-7 py-3 rounded-full shadow-lg hover:shadow-xl transition-all active:scale-95"
             >
               Explore Menu
             </button>
@@ -108,7 +108,7 @@ const HeroSection = () => {
 
         {/* Scroll indicator */}
         <div className="flex justify-center mt-4">
-          <button onClick={scrollToMenu} className="animate-bounce text-gold/40 hover:text-gold transition-colors">
+          <button onClick={scrollToMenu} className="animate-bounce text-pink/40 hover:text-pink transition-colors">
             <ChevronDown className="h-5 w-5" />
           </button>
         </div>
