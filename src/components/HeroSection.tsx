@@ -18,7 +18,7 @@ const HeroSection = () => {
   return (
     <section className="relative overflow-hidden navy-gradient">
       {/* Subtle radial glow with pink */}
-      <div className="absolute inset-0 opacity-25" style={{
+      <div className="absolute inset-0 opacity-40" style={{
         background: `radial-gradient(ellipse at 50% 100%, hsl(var(--pink) / 0.35) 0%, transparent 55%), radial-gradient(ellipse at 50% 0%, hsl(var(--gold) / 0.2) 0%, transparent 60%)`
       }} />
 
@@ -36,13 +36,13 @@ const HeroSection = () => {
             <h1 className="font-display text-3xl md:text-5xl text-primary-foreground tracking-wide font-bold">
               MASQATI
             </h1>
-            <p className="text-gold font-display text-lg md:text-xl italic mt-1 font-medium">
+            <p className="text-gold font-display text-lg md:text-xl italic mt-1 font-medium drop-shadow-[0_0_8px_hsl(38_65%_55%/0.4)]">
               50+ Years of Sweet Legacy
             </p>
           </div>
 
           {/* Description */}
-          <p className="text-primary-foreground/60 font-body text-sm md:text-base max-w-md leading-relaxed">
+          <p className="text-primary-foreground/85 font-body text-sm md:text-base max-w-md leading-relaxed">
             Premium ice creams, fresh dairy, authentic namkeens & our exclusive food menu.
           </p>
 
@@ -51,14 +51,14 @@ const HeroSection = () => {
             href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 glass-effect border border-gold/20 rounded-full px-5 py-2.5 transition-all group hover:border-gold/40 active:scale-95"
+            className="flex items-center gap-2 glass-effect border border-pink/30 rounded-full px-5 py-2.5 transition-all group hover:border-pink/50 active:scale-95"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-gold"></span>
             </span>
             <MapPin className="h-3.5 w-3.5 text-gold" />
-            <span className="text-primary-foreground/80 font-body text-xs font-medium">
+            <span className="text-primary-foreground/90 font-body text-xs font-medium">
               Pocharam, Ghatkesar
             </span>
           </a>
@@ -94,12 +94,12 @@ const HeroSection = () => {
             >
               <div className="story-ring">
                 <div className="story-ring-inner">
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-secondary flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-navy-light flex items-center justify-center text-2xl group-hover:scale-105 transition-transform">
                     {cat.icon}
                   </div>
                 </div>
               </div>
-              <span className="text-primary-foreground/70 font-body text-[10px] font-medium max-w-[64px] text-center leading-tight line-clamp-1">
+              <span className="text-primary-foreground/90 font-body text-[10px] font-medium max-w-[64px] text-center leading-tight line-clamp-1">
                 {cat.name.split(' ')[0]}
               </span>
             </button>
@@ -108,7 +108,7 @@ const HeroSection = () => {
 
         {/* Scroll indicator */}
         <div className="flex justify-center mt-4">
-          <button onClick={scrollToMenu} className="animate-bounce text-pink/40 hover:text-pink transition-colors">
+          <button onClick={scrollToMenu} className="animate-bounce text-pink/70 hover:text-pink transition-colors">
             <ChevronDown className="h-5 w-5" />
           </button>
         </div>

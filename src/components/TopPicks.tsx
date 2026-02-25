@@ -21,7 +21,7 @@ const TopPicks = () => {
           <h2 className="font-display text-2xl md:text-3xl text-foreground font-bold tracking-tight">
             Top Picks
           </h2>
-          <div className="w-10 h-[3px] gold-gradient mt-2 rounded-full" />
+          <div className="w-10 h-[3px] pink-gold-gradient mt-2 rounded-full" />
         </div>
 
         {/* Collections */}
@@ -81,7 +81,7 @@ const TopPicks = () => {
                           className={`flex items-center justify-center w-8 h-8 rounded-full active:scale-90 transition-all shadow-sm ${
                             inCart
                               ? "bg-primary text-primary-foreground"
-                              : "gold-gradient text-foreground hover:opacity-90"
+                              : "pink-gold-gradient text-white hover:opacity-90"
                           }`}
                         >
                           <Plus className="h-4 w-4" />

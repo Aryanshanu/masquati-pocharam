@@ -115,7 +115,7 @@ const CartDrawer = ({ open, onOpenChange, onCheckout }: CartDrawerProps) => {
 
             <Button
               onClick={onCheckout}
-              className="w-full h-12 gold-gradient text-foreground hover:opacity-90 rounded-full font-body text-sm font-bold active:scale-[0.98] transition-transform shadow-lg border-0"
+              className="w-full h-12 pink-gold-gradient text-white hover:opacity-90 rounded-full font-body text-sm font-bold active:scale-[0.98] transition-transform shadow-lg border-0"
             >
               Proceed to Checkout
             </Button>

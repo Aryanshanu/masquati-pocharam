@@ -101,23 +101,23 @@ const ProductCard = ({ product }: ProductCardProps) => {
             Add
           </Button>
         ) : (
-          <div className="flex items-center gap-1 bg-primary rounded-full px-1 py-0.5">
+          <div className="flex items-center gap-1 pink-gold-gradient rounded-full px-1 py-0.5">
             <Button
               size="icon"
               variant="ghost"
               onClick={() => updateQuantity(product.id, quantity - 1)}
-              className="h-7 w-7 rounded-full text-primary-foreground hover:bg-primary-foreground/10 active:scale-90 transition-transform"
+              className="h-7 w-7 rounded-full text-white hover:bg-white/10 active:scale-90 transition-transform"
             >
               <Minus className="h-3 w-3" />
             </Button>
-            <span className="font-body font-bold text-primary-foreground w-5 text-center text-xs">
+            <span className="font-body font-bold text-white w-5 text-center text-xs">
               {quantity}
             </span>
             <Button
               size="icon"
               variant="ghost"
               onClick={() => updateQuantity(product.id, quantity + 1)}
-              className="h-7 w-7 rounded-full text-primary-foreground hover:bg-primary-foreground/10 active:scale-90 transition-transform"
+              className="h-7 w-7 rounded-full text-white hover:bg-white/10 active:scale-90 transition-transform"
             >
               <Plus className="h-3 w-3" />
             </Button>
