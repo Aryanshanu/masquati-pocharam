@@ -35,7 +35,7 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
 
   if (filteredProducts) {
     return (
-      <div className="container mx-auto px-3 pb-24">
+      <div id="product-list" className="container mx-auto px-3 pb-24">
         <div className="mb-4">
           <h2 className="font-display text-xl text-foreground">
             Search Results
@@ -62,7 +62,7 @@ const ProductList = ({ activeCategory, searchQuery, onCategoryInView }: ProductL
   }
 
   return (
-    <div className="container mx-auto px-3 pb-24">
+    <div id="product-list" className="container mx-auto px-3 pb-24">
       {categories.map((category) => {
         const categoryProducts = getProductsByCategory(category.id);
         if (categoryProducts.length === 0) return null;
