@@ -38,41 +38,26 @@ const CheckoutForm = ({ open, onOpenChange }: CheckoutFormProps) => {
 
   const handleGetLocation = () => {
     if (!navigator.geolocation) {
-      toast({
-        title: "Location not supported",
-        description: "Your browser doesn't support geolocation",
-        variant: "destructive",
-      });
+      toast({ title: "Location not supported", description: "Your browser doesn't support geolocation", variant: "destructive" });
       return;
     }
-
     setIsLoadingLocation(true);
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude } = position.coords;
         try {
-          const response = await fetch(
-            `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`
-          );
+          const response = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=json`);
           const data = await response.json();
-          const locationText = data.display_name || `${latitude}, ${longitude}`;
-          setLocation(locationText);
-          toast({
-            title: "Location detected",
-            description: "Your location has been added",
-          });
+          setLocation(data.display_name || `${latitude}, ${longitude}`);
+          toast({ title: "Location detected", description: "Your location has been added" });
         } catch {
           setLocation(`${latitude.toFixed(6)}, ${longitude.toFixed(6)}`);
         }
         setIsLoadingLocation(false);
       },
-      (error) => {
+      () => {
         setIsLoadingLocation(false);
-        toast({
-          title: "Location error",
-          description: "Could not get your location. Please enter manually.",
-          variant: "destructive",
-        });
+        toast({ title: "Location error", description: "Could not get your location.", variant: "destructive" });
       },
       { enableHighAccuracy: true, timeout: 10000 }
     );
@@ -95,72 +80,53 @@ const CheckoutForm = ({ open, onOpenChange }: CheckoutFormProps) => {
 
     let message = `🛒 *New Order from Masqati Catalogue*\n\n`;
     message += `👤 *Customer Details*\n`;
-    message += `Name: ${name}\n`;
-    message += `Contact: +91 ${contact}\n`;
+    message += `Name: ${name}\nContact: +91 ${contact}\n`;
     if (address.trim()) message += `Address: ${address}\n`;
     if (location.trim()) message += `Location: ${location}\n`;
     message += `\n📦 *Order Items*\n`;
-    
     items.forEach((item, index) => {
       const itemTotal = item.product.mrp * item.quantity;
       message += `${index + 1}. ${item.product.name} (${item.product.packSize}) × ${item.quantity} = ₹${itemTotal}\n`;
     });
-
     message += `\n💰 *Total: ₹${cartTotal}*`;
 
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, "_blank");
-
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank");
     clearCart();
-    setName("");
-    setContact("");
-    setAddress("");
-    setLocation("");
+    setName(""); setContact(""); setAddress(""); setLocation("");
     onOpenChange(false);
-
-    toast({
-      title: "Order sent!",
-      description: "Your order has been sent via WhatsApp",
-    });
+    toast({ title: "Order sent!", description: "Your order has been sent via WhatsApp" });
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md mx-4 rounded-2xl bg-background">
+      <DialogContent className="max-w-md mx-4 rounded-3xl bg-background border-0 shadow-xl">
         <DialogHeader>
-          <DialogTitle className="font-display text-2xl text-center">
+          <DialogTitle className="font-display text-2xl text-center font-bold">
             Complete Your Order
           </DialogTitle>
         </DialogHeader>
 
-        <div className="space-y-4 py-3">
-          {/* Name Field */}
+        <div className="space-y-4 py-2">
           <div className="space-y-1.5">
-            <Label htmlFor="name" className="font-body font-medium text-sm">
+            <Label htmlFor="name" className="font-body font-medium text-xs">
               Name <span className="text-destructive">*</span>
             </Label>
             <Input
               id="name"
               placeholder="Enter your name"
               value={name}
-              onChange={(e) => {
-                setName(e.target.value);
-                if (errors.name) setErrors({ ...errors, name: undefined });
-              }}
-              className={`h-11 rounded-xl font-body border-border focus:ring-ring ${errors.name ? "border-destructive" : ""}`}
+              onChange={(e) => { setName(e.target.value); if (errors.name) setErrors({ ...errors, name: undefined }); }}
+              className={`h-11 rounded-2xl font-body border-0 bg-secondary focus:ring-ring/50 shadow-sm ${errors.name ? "ring-2 ring-destructive" : ""}`}
             />
-            {errors.name && (
-              <p className="text-destructive text-xs font-body">{errors.name}</p>
-            )}
+            {errors.name && <p className="text-destructive text-[11px] font-body">{errors.name}</p>}
           </div>
 
-          {/* Contact Field */}
           <div className="space-y-1.5">
-            <Label htmlFor="contact" className="font-body font-medium text-sm">
-              Contact Number <span className="text-destructive">*</span>
+            <Label htmlFor="contact" className="font-body font-medium text-xs">
+              Contact <span className="text-destructive">*</span>
             </Label>
             <div className="flex gap-2">
-              <div className="flex items-center justify-center bg-secondary px-3 rounded-xl text-muted-foreground font-body text-sm">
+              <div className="flex items-center justify-center bg-secondary px-3 rounded-2xl text-muted-foreground font-body text-xs">
                 +91
               </div>
               <Input
@@ -168,37 +134,29 @@ const CheckoutForm = ({ open, onOpenChange }: CheckoutFormProps) => {
                 type="tel"
                 placeholder="Mobile number"
                 value={contact}
-                onChange={(e) => {
-                  const value = e.target.value.replace(/\D/g, "").slice(0, 10);
-                  setContact(value);
-                  if (errors.contact) setErrors({ ...errors, contact: undefined });
-                }}
-                className={`h-11 rounded-xl font-body border-border focus:ring-ring ${errors.contact ? "border-destructive" : ""}`}
+                onChange={(e) => { const v = e.target.value.replace(/\D/g, "").slice(0, 10); setContact(v); if (errors.contact) setErrors({ ...errors, contact: undefined }); }}
+                className={`h-11 rounded-2xl font-body border-0 bg-secondary focus:ring-ring/50 shadow-sm ${errors.contact ? "ring-2 ring-destructive" : ""}`}
               />
             </div>
-            {errors.contact && (
-              <p className="text-destructive text-xs font-body">{errors.contact}</p>
-            )}
+            {errors.contact && <p className="text-destructive text-[11px] font-body">{errors.contact}</p>}
           </div>
 
-          {/* Address Field */}
           <div className="space-y-1.5">
-            <Label htmlFor="address" className="font-body font-medium text-sm">
-              Delivery Address <span className="text-muted-foreground text-xs">(Optional)</span>
+            <Label htmlFor="address" className="font-body font-medium text-xs">
+              Address <span className="text-muted-foreground text-[10px]">(Optional)</span>
             </Label>
             <Textarea
               id="address"
-              placeholder="Enter your delivery address"
+              placeholder="Enter delivery address"
               value={address}
               onChange={(e) => setAddress(e.target.value)}
-              className="min-h-[70px] rounded-xl font-body resize-none border-border focus:ring-ring"
+              className="min-h-[60px] rounded-2xl font-body resize-none border-0 bg-secondary focus:ring-ring/50 shadow-sm"
             />
           </div>
 
-          {/* Location Field */}
           <div className="space-y-1.5">
-            <Label htmlFor="location" className="font-body font-medium text-sm">
-              Location <span className="text-muted-foreground text-xs">(Optional)</span>
+            <Label htmlFor="location" className="font-body font-medium text-xs">
+              Location <span className="text-muted-foreground text-[10px]">(Optional)</span>
             </Label>
             <div className="flex gap-2">
               <Input
@@ -206,42 +164,35 @@ const CheckoutForm = ({ open, onOpenChange }: CheckoutFormProps) => {
                 placeholder="Enter or detect"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
-                className="h-11 rounded-xl font-body flex-1 border-border focus:ring-ring"
+                className="h-11 rounded-2xl font-body flex-1 border-0 bg-secondary focus:ring-ring/50 shadow-sm"
               />
               <Button
                 type="button"
                 variant="outline"
                 onClick={handleGetLocation}
                 disabled={isLoadingLocation}
-                className="h-11 px-3 rounded-xl border-border"
+                className="h-11 px-3 rounded-2xl border-0 bg-secondary shadow-sm"
               >
-                {isLoadingLocation ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <MapPin className="h-4 w-4 text-gold" />
-                )}
+                {isLoadingLocation ? <Loader2 className="h-4 w-4 animate-spin" /> : <MapPin className="h-4 w-4 text-gold" />}
               </Button>
             </div>
           </div>
 
           {/* Order Summary */}
-          <div className="bg-card rounded-xl p-3.5 border border-border space-y-2">
-            <div className="flex justify-between font-body text-xs text-muted-foreground">
+          <div className="bg-secondary rounded-2xl p-3.5 space-y-2 border border-gold/10">
+            <div className="flex justify-between font-body text-[11px] text-muted-foreground">
               <span>{items.length} items</span>
               <span>{items.reduce((sum, item) => sum + item.quantity, 0)} units</span>
             </div>
             <div className="flex justify-between items-center">
-              <span className="font-display text-sm">Total Amount</span>
-              <span className="font-display text-lg text-gold">
-                ₹{cartTotal}
-              </span>
+              <span className="font-display text-sm font-bold">Total</span>
+              <span className="font-display text-lg text-gold font-bold">₹{cartTotal}</span>
             </div>
           </div>
 
-          {/* Submit Button */}
           <Button
             onClick={handleSubmit}
-            className="w-full h-12 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full font-body text-base font-semibold active:scale-[0.98] transition-transform"
+            className="w-full h-12 bg-[#25D366] hover:bg-[#128C7E] text-white rounded-full font-body text-sm font-bold active:scale-[0.98] transition-transform shadow-lg border-0"
           >
             <Send className="h-4 w-4 mr-2" />
             Place Order via WhatsApp
