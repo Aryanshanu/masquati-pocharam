@@ -65,6 +65,11 @@ export default {
           DEFAULT: "hsl(var(--cream))",
           dark: "hsl(var(--cream-dark))",
         },
+        pink: {
+          DEFAULT: "hsl(var(--pink))",
+          light: "hsl(var(--pink-light))",
+          dark: "hsl(var(--pink-dark))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -102,6 +107,10 @@ export default {
           "0%, 100%": { boxShadow: "0 0 0 0 hsl(var(--gold) / 0.4)" },
           "50%": { boxShadow: "0 0 0 8px hsl(var(--gold) / 0)" },
         },
+        "pulse-pink": {
+          "0%, 100%": { boxShadow: "0 0 0 0 hsl(var(--pink) / 0.4)" },
+          "50%": { boxShadow: "0 0 0 8px hsl(var(--pink) / 0)" },
+        },
         "float": {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-4px)" },
@@ -121,6 +130,7 @@ export default {
         "fade-in-up": "fade-in-up 0.5s ease-out",
         "scale-in": "scale-in 0.3s ease-out",
         "pulse-gold": "pulse-gold 2s ease-in-out infinite",
+        "pulse-pink": "pulse-pink 2s ease-in-out infinite",
         "float": "float 3s ease-in-out infinite",
         "heart-pop": "heart-pop 0.3s ease-out",
       },

@@ -13,9 +13,9 @@ const getBadgeStyles = (badge: string) => {
     case 'bestseller':
       return 'gold-gradient text-foreground';
     case 'hot':
-      return 'bg-destructive text-destructive-foreground';
+      return 'pink-gradient text-white';
     case 'new':
-      return 'bg-emerald-500 text-white';
+      return 'bg-pink-dark text-white';
     case 'sale':
       return 'bg-primary text-primary-foreground';
     default:
@@ -95,7 +95,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           <Button
             onClick={() => addToCart(product)}
             size="sm"
-            className="gold-gradient text-foreground hover:opacity-90 font-body font-semibold rounded-full px-5 h-9 text-xs active:scale-95 transition-all shadow-sm border-0"
+            className="pink-gold-gradient text-white hover:opacity-90 font-body font-semibold rounded-full px-5 h-9 text-xs active:scale-95 transition-all shadow-sm border-0"
           >
             <Plus className="h-3.5 w-3.5 mr-1" />
             Add

@@ -24,7 +24,7 @@ const BottomNav = ({ onCartClick, onFavoritesClick }: BottomNavProps) => {
           >
             <Heart className={`h-4 w-4 ${favCount > 0 ? 'text-destructive fill-destructive' : 'text-muted-foreground'}`} />
             {favCount > 0 && (
-              <span className="absolute -top-1 -right-1 gold-gradient text-foreground text-[9px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
+              <span className="absolute -top-1 -right-1 pink-gradient text-white text-[9px] font-bold rounded-full h-4 w-4 flex items-center justify-center">
                 {favCount > 9 ? "9+" : favCount}
               </span>
             )}
@@ -35,7 +35,7 @@ const BottomNav = ({ onCartClick, onFavoritesClick }: BottomNavProps) => {
             onClick={onCartClick}
             className={`flex-1 flex items-center justify-between h-10 rounded-full px-4 active:scale-[0.98] transition-all font-body ${
               totalItems > 0
-                ? 'gold-gradient text-foreground shadow-sm'
+                ? 'pink-gold-gradient text-white shadow-sm'
                 : 'bg-card text-muted-foreground'
             }`}
           >

@@ -22,7 +22,7 @@ const Header = () => {
               alt="Masqati"
               className="h-7 md:h-9 w-auto object-contain"
             />
-            <span className="hidden sm:block text-gold font-display text-xs italic font-medium">
+            <span className="hidden sm:block text-pink font-display text-xs italic font-medium">
               Est. 1970
             </span>
           </div>
@@ -34,7 +34,7 @@ const Header = () => {
               className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors p-2 rounded-full active:scale-95"
               aria-label="View location on map"
             >
-              <MapPin className="h-4 w-4 text-gold" />
+              <MapPin className="h-4 w-4 text-pink" />
               <span className="hidden md:inline text-xs font-body font-medium">
                 Pocharam
               </span>

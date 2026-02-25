@@ -9,7 +9,7 @@
 @layer base {
   :root {
     /* Warm Premium Palette */
-    --background: 30 15% 97%;
+    --background: 350 15% 97%;
     --foreground: 220 25% 10%;
 
     --card: 0 0% 100%;
@@ -38,7 +38,7 @@
 
     --border: 35 10% 92%;
     --input: 35 10% 90%;
-    --ring: 38 65% 55%;
+    --ring: 340 75% 60%;
 
     --radius: 1rem;
 
@@ -46,10 +46,13 @@
     --gold: 38 65% 55%;
     --gold-light: 38 55% 68%;
     --gold-dark: 38 70% 42%;
+    --pink: 340 75% 60%;
+    --pink-light: 340 65% 75%;
+    --pink-dark: 340 80% 45%;
     --navy: 220 30% 15%;
     --navy-dark: 220 30% 10%;
     --navy-light: 220 20% 28%;
-    --cream: 30 15% 97%;
+    --cream: 350 15% 97%;
     --cream-dark: 35 20% 95%;
 
     /* Typography */
@@ -91,7 +94,11 @@
 
     --border: 220 30% 20%;
     --input: 220 30% 20%;
-    --ring: 38 65% 55%;
+    --ring: 340 75% 60%;
+
+    --pink: 340 75% 60%;
+    --pink-light: 340 65% 75%;
+    --pink-dark: 340 80% 45%;
   }
 }
 
@@ -151,6 +158,14 @@
     background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-light)));
   }
 
+  .pink-gradient {
+    background: linear-gradient(135deg, hsl(var(--pink)), hsl(var(--pink-light)));
+  }
+
+  .pink-gold-gradient {
+    background: linear-gradient(135deg, hsl(var(--pink)), hsl(var(--gold)));
+  }
+
   .navy-gradient {
     background: linear-gradient(180deg, hsl(var(--navy)), hsl(var(--navy-dark)));
   }
@@ -179,7 +194,7 @@
 
   /* Instagram story ring */
   .story-ring {
-    background: linear-gradient(135deg, hsl(var(--gold)), hsl(var(--gold-dark)), hsl(var(--gold-light)));
+    background: linear-gradient(135deg, hsl(var(--pink)), hsl(var(--gold)), hsl(var(--pink-light)));
     padding: 2.5px;
     border-radius: 9999px;
   }
@@ -197,7 +212,7 @@
 
   /* Shimmer animation */
   .shimmer {
-    background: linear-gradient(90deg, transparent 0%, hsl(var(--gold) / 0.08) 50%, transparent 100%);
+    background: linear-gradient(90deg, transparent 0%, hsl(var(--pink) / 0.08) 50%, transparent 100%);
     background-size: 200% 100%;
     animation: shimmer 2s ease-in-out infinite;
   }
